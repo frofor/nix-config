@@ -2,8 +2,8 @@
   home = "/home/${user}";
   email = "18nraywczifc@protonmail.com";
   gpgKey = "35F577EAAE047585";
-  font = "Hasklug Nerd Font Propo";
-  fontMono = "Hasklug Nerd Font Mono";
+  font = "Iosevka Nerd Font Propo";
+  fontMono = "Iosevka Nerd Font";
 in {
   imports = [
     (import ./foot.nix { font = fontMono; })
@@ -31,11 +31,12 @@ in {
       librewolf
       lldb
       mpv
-      nerd-fonts.hasklug
+      nerd-fonts.iosevka
       ripgrep
       rustc
       rustfmt
       socat
+      skim
       sway
       tmux
     ];

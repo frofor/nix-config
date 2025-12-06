@@ -18,6 +18,5 @@
     smartcase = true;
     swapfile = false;
     undofile = true;
-    winborder = "single";
   };
 }

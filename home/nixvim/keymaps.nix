@@ -2,8 +2,7 @@
   programs.nixvim.keymaps = [
     { mode = ["n" "v" "x"]; key = ";"; action = ":"; }
     { mode = ["n"]; key = "<leader>w"; action = ":update<cr>"; }
-    { mode = ["n"]; key = "<c-x>"; action = ":quit!<cr>"; }
-    { mode = ["n"]; key = "<c-s-x>"; action = ":quitall!<cr>"; }
+    { mode = ["n"]; key = "<leader>x"; action = ":quitall!<cr>"; }
     { mode = ["n"]; key = "<c-1>"; action = ":buffer 1<cr>"; }
     { mode = ["n"]; key = "<c-2>"; action = ":buffer 2<cr>"; }
     { mode = ["n"]; key = "<c-3>"; action = ":buffer 3<cr>"; }

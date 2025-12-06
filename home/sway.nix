@@ -15,6 +15,13 @@ in {
         "4" = [{ app_id = "mpv"; }];
         "5" = [{ app_id = "gimp"; }];
       };
+      modes.resize = {
+        "${left}" = "resize shrink width 10 px";
+        "${down}" = "resize grow height 10 px";
+        "${up}" = "resize shrink height 10 px";
+        "${right}" = "resize grow width 10 px";
+        "escape" = "mode default";
+      };
       startup = [
         { command = "librewolf"; }
         { command = "keepassxc"; }
@@ -27,14 +34,15 @@ in {
         "${mod}+n" = "exec foot -e nmtui-connect";
         "${mod}+f" = "fullscreen";
         "${mod}+x" = "kill";
+        "${mod}+r" = "mode resize";
         "${mod}+${left}" = "focus left";
-        "${mod}+${right}" = "focus right";
-        "${mod}+${up}" = "focus up";
         "${mod}+${down}" = "focus down";
+        "${mod}+${up}" = "focus up";
+        "${mod}+${right}" = "focus right";
         "${mod}+shift+${left}" = "move left";
-        "${mod}+shift+${right}" = "move right";
-        "${mod}+shift+${up}" = "move up";
         "${mod}+shift+${down}" = "move down";
+        "${mod}+shift+${up}" = "move up";
+        "${mod}+shift+${right}" = "move right";
         "${mod}+1" = "workspace number 1";
         "${mod}+2" = "workspace number 2";
         "${mod}+3" = "workspace number 3";
