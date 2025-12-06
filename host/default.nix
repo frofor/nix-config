@@ -1,9 +1,4 @@
-{ pkgs, ... }:
-
-let
-  user = "frofor";
-in
-{
+{ pkgs, user, host, ... }: {
   imports = [./hardware.nix];
   system.stateVersion = "25.05";
   hardware.graphics.enable = true;
@@ -14,7 +9,7 @@ in
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   networking = {
-    hostName = "nixos";
+    hostName = host;
     networkmanager = {
       enable = true;
       plugins = with pkgs; [networkmanager-openvpn];

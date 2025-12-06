@@ -1,5 +1,4 @@
 {
-  description = "NixOS configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -11,19 +10,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ nixpkgs, home-manager, nixvim, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs = { nixpkgs, home-manager, nixvim, ... }: let
+    inherit (nixpkgs.lib) nixosSystem;
+    user = "frofor";
+    host = "nixos";
+  in {
+    nixosConfigurations."${host}" = nixosSystem {
       modules = [
-        ./host
+        ({ pkgs, ... }: import ./host { inherit pkgs user host; })
         home-manager.nixosModules.home-manager
         {
           home-manager = {
+            users."${user}" = import ./home;
             sharedModules = [nixvim.homeModules.nixvim];
-            users.frofor = import ./home;
+            extraSpecialArgs = { inherit user; };
           };
         }
       ];
-      specialArgs = { inherit inputs; };
     };
   };
 }

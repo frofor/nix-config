@@ -1,6 +1,6 @@
-{ font }:
-
-{
-  enable = true;
-  settings.main.font = "${font}:size=12";
+{ font, ... }: {
+  programs.foot = {
+    enable = true;
+    settings.main.font = "${font}:size=12";
+  };
 }
