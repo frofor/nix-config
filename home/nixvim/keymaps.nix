@@ -31,6 +31,13 @@
     { mode = [ "n" ]; key = "<c-s-l>"; action = ":vertical resize +5<cr>"; }
     { mode = [ "n" "v" ]; key = "<c-n>"; action = "<esc>:'<,'>normal "; }
     { mode = [ "n" "v" ]; key = "<c-s>"; action = "<esc>:'<,'>substitute/\\V"; }
+    { mode = [ "n" ]; key = "gd"; action = ":lua Snacks.picker.lsp_definitions()<cr>"; }
+    { mode = [ "n" ]; key = "gD"; action = ":lua Snacks.picker.lsp_declarations()<cr>"; }
+    { mode = [ "n" ]; key = "gy"; action = ":lua Snacks.picker.lsp_type_definitions()<cr>"; }
+    { mode = [ "n" ]; key = "gr"; action = ":lua Snacks.picker.lsp_references()<cr>"; }
+    { mode = [ "n" ]; key = "gi"; action = ":lua Snacks.picker.lsp_implementations()<cr>"; }
+    { mode = [ "n" ]; key = "gs"; action = ":lua Snacks.picker.lsp_symbols()<cr>"; }
+    { mode = [ "n" ]; key = "gS"; action = ":lua Snacks.picker.lsp_workspace_symbols()<cr>"; }
     { mode = [ "n" ]; key = "<leader>F"; action = ":lua vim.lsp.buf.format()<cr>"; }
     { mode = [ "n" ]; key = "<leader>R"; action = ":lua vim.lsp.buf.rename()<cr>"; }
     { mode = [ "n" ]; key = "<leader>D"; action = ":lua vim.diagnostic.open_float()<cr>"; }
@@ -45,14 +52,16 @@
     { mode = [ "n" ]; key = "<leader>r"; action = ":lua Snacks.picker.recent()<cr>"; }
     { mode = [ "n" ]; key = "<leader>b"; action = ":lua Snacks.picker.buffers()<cr>"; }
     { mode = [ "n" ]; key = "<leader>e"; action = ":lua Snacks.explorer()<cr>"; }
-    { mode = [ "n" ]; key = "<leader>h"; action = ":lua Snacks.picker.help()<cr>"; }
-    { mode = [ "n" ]; key = "gd"; action = ":lua Snacks.picker.lsp_definitions()<cr>"; }
-    { mode = [ "n" ]; key = "gD"; action = ":lua Snacks.picker.lsp_declarations()<cr>"; }
-    { mode = [ "n" ]; key = "gy"; action = ":lua Snacks.picker.lsp_type_definitions()<cr>"; }
-    { mode = [ "n" ]; key = "gr"; action = ":lua Snacks.picker.lsp_references()<cr>"; }
-    { mode = [ "n" ]; key = "gi"; action = ":lua Snacks.picker.lsp_implementations()<cr>"; }
-    { mode = [ "n" ]; key = "gs"; action = ":lua Snacks.picker.lsp_symbols()<cr>"; }
-    { mode = [ "n" ]; key = "gS"; action = ":lua Snacks.picker.lsp_workspace_symbols()<cr>"; }
+    { mode = [ "n" ]; key = "<leader>H"; action = ":lua Snacks.picker.help()<cr>"; }
+    { mode = [ "n" ]; key = "[h"; action = ":Gitsigns nav_hunk prev<cr>"; }
+    { mode = [ "n" ]; key = "]h"; action = ":Gitsigns nav_hunk next<cr>"; }
+    { mode = [ "n" ]; key = "<leader>ha"; action = ":Gitsigns stage_hunk<cr>"; }
+    { mode = [ "n" ]; key = "<leader>hr"; action = ":Gitsigns reset_hunk<cr>"; }
+    { mode = [ "n" ]; key = "<leader>ho"; action = ":Gitsigns preview_hunk<cr>"; }
+    { mode = [ "n" ]; key = "<leader>hd"; action = ":Gitsigns diffthis | wincmd h<cr>"; }
+    { mode = [ "n" ]; key = "<leader>hc"; action = ":Gitsigns show_commit<cr>"; }
+    { mode = [ "n" ]; key = "<leader>hb"; action = ":Gitsigns blame_line<cr>"; }
+    { mode = [ "n" ]; key = "<leader>hB"; action = ":Gitsigns blame<cr>"; }
     { mode = [ "n" ]; key = "<leader>db"; action = ":DapToggleBreakpoint<cr>"; }
     { mode = [ "n" ]; key = "<leader>dN"; action = ":DapContinue<cr>"; }
     { mode = [ "n" ]; key = "<leader>dn"; action = ":DapStepOver<cr>"; }
