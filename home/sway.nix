@@ -16,10 +16,10 @@ in {
         "5" = [{ app_id = "gimp"; }];
       };
       modes.resize = {
-        "${left}" = "resize shrink width 10 px";
-        "${down}" = "resize grow height 10 px";
-        "${up}" = "resize shrink height 10 px";
-        "${right}" = "resize grow width 10 px";
+        "${left}" = "resize shrink width 25 px";
+        "${down}" = "resize grow height 25 px";
+        "${up}" = "resize shrink height 25 px";
+        "${right}" = "resize grow width 25 px";
         "escape" = "mode default";
       };
       startup = [

@@ -1,11 +1,12 @@
 { font, ... }: let
   color = {
-    white = "#eceff4";
-    dark = "#3b4252";
-    black = "#151515";
-    red = "#bf616a";
-    green = "#a3be8c";
-    blue = "#5e81ac";
+    black = "#000000";
+    white = "#ffffff";
+    red = "#ff0000";
+    orange = "#ff5a00";
+    yellow = "#ffff00";
+    green = "#00ff00";
+    blue = "#0000ff";
   };
 in {
   programs.waybar = {
@@ -37,6 +38,10 @@ in {
         format-icons = ["" ""];
         tooltip = false;
       };
+      "sway/mode" = {
+        format = "<span text-transform=\"uppercase\">-- {} --</span>";
+        tooltip = false;
+      };
       "sway/window".tooltip = false;
       clock = {
         format = "󱑎 {:%R 󰃭 %d.%m}";
@@ -47,6 +52,8 @@ in {
         tooltip = false;
       };
       pulseaudio = {
+        on-scroll-up = "";
+        on-scroll-down = "";
         format = "{icon} {volume}% {format_source}";
         format-muted = "<span color=\"${color.red}\">󰖁</span> {format_source}";
         format-source = " {volume}%";
@@ -60,50 +67,83 @@ in {
       };
       battery = {
         states = {
-          warning = 50;
-          critical = 30;
+          high = 100;
+          medium = 60;
+          low = 40;
+          critical = 20;
         };
-        format = "{icon} {capacity}%";
-        format-plugged = "󰂄 {capacity}%";
-        format-icons = ["󱉞" "󰂎" "󱊡" "󱊢" "󱊣"];
+        format = "{icon}  {capacity}%";
+        format-charging = "{icon}󱐋 {capacity}%";
+        format-discharging = "{icon}󰚥 {capacity}%";
+        format-icons = {
+            high = "󱊣";
+            medium = "󱊢";
+            low = "󱊡";
+            critical = "󰂎";
+        };
         tooltip = false;
       };
     }];
     style = ''
       * {
-        font-family: ${font}, sans-serif;
-        font-size: 14px;
+          font-family: ${font}, sans-serif;
+          font-size: 12px;
       }
 
       #waybar {
-        background-color: ${color.black};
-        color: ${color.white};
+          background-color: ${color.black};
+          color: ${color.white};
       }
 
       .modules-right {
-        margin-right: 10px;
+          margin-right: 10px;
       }
 
       #workspaces button {
-        border-radius: 0;
-        color: ${color.white};
-        padding: 2px 7px;
+          border: none;
+          border-radius: 0;
+          color: ${color.white};
+          padding: 0px 4px;
+      }
+
+      #workspaces button:hover {
+          background: initial;
+          box-shadow: initial;
+          text-shadow: initial;
       }
 
       #workspaces button.focused {
-        background-color: ${color.dark};
+          background-color: ${color.white};
+          color: ${color.black};
       }
 
       #workspaces button.urgent {
-        background-color: ${color.red};
+          background-color: ${color.red};
       }
 
       #mode {
-        background-color: ${color.dark};
+          background-color: inherit;
+          color: inherit;
       }
 
-      #battery {
-        color: ${color.green};
+      #battery.charging {
+          color: ${color.blue};
+      }
+
+      #battery.discharging.high {
+          color: ${color.green};
+      }
+
+      #battery.discharging.medium {
+          color: ${color.yellow};
+      }
+
+      #battery.discharging.low {
+          color: ${color.orange};
+      }
+
+      #battery.discharging.critical {
+          color: ${color.red};
       }
     '';
   };
