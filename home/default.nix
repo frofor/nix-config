@@ -17,11 +17,11 @@ in
     (import ./nixvim { inherit host; })
     (import ./sway.nix { inherit font; })
     (import ./waybar.nix { inherit font; })
-    ./xdg.nix
+    (import  ./xdg.nix { inherit home; })
     ./zsh.nix
   ];
   home = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     username = user;
     homeDirectory = home;
     packages = with pkgs; [

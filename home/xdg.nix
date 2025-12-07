@@ -4,11 +4,15 @@
   xdg = {
     enable = true;
     userDirs = {
-      download = "${home}/downloads";
+      enable = true;
+      desktop = "${home}/desktop";
       documents = "${home}/documents";
-      pictures = "${home}/pictures";
-      videos = "${home}/videos";
+      download = "${home}/downloads";
       music = "${home}/music";
+      pictures = "${home}/pictures";
+      publicShare = "${home}/public";
+      templates = "${home}/templates";
+      videos = "${home}/videos";
     };
   };
 }

@@ -1,7 +1,7 @@
 { pkgs, user, host, ... }: {
   imports = [./hardware.nix];
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   hardware.graphics.enable = true;
   boot.loader = {
     systemd-boot.enable = true;

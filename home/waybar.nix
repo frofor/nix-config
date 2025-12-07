@@ -136,24 +136,24 @@ in
           color: inherit;
       }
 
-      #battery.charging {
-          color: ${color.blue};
-      }
-
-      #battery.discharging.high {
+      #battery.high {
           color: ${color.green};
       }
 
-      #battery.discharging.medium {
+      #battery.medium {
           color: ${color.yellow};
       }
 
-      #battery.discharging.low {
+      #battery.low {
           color: ${color.orange};
       }
 
-      #battery.discharging.critical {
+      #battery.critical {
           color: ${color.red};
+      }
+
+      #battery.charging {
+          color: ${color.blue};
       }
     '';
   };
