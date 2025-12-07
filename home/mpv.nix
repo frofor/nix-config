@@ -1,6 +1,7 @@
 let
   inherit (builtins) getEnv;
-in {
+in
+{
   programs.mpv = {
     enable = true;
     config = {

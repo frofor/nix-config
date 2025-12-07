@@ -1,4 +1,6 @@
-{ font, ... }: let
+{ font, ... }:
+
+let
   color = {
     black = "#000000";
     white = "#ffffff";
@@ -8,7 +10,8 @@
     green = "#00ff00";
     blue = "#0000ff";
   };
-in {
+in
+{
   programs.waybar = {
     enable = true;
     settings = [{
@@ -35,7 +38,7 @@ in {
       };
       "sway/scratchpad" = {
         format = "{icon} {count}";
-        format-icons = ["" ""];
+        format-icons = [ "" "" ];
         tooltip = false;
       };
       "sway/mode" = {
@@ -59,7 +62,7 @@ in {
         format-source = " {volume}%";
         format-source-muted = "<span color=\"${color.red}\"></span>";
         format-icons = {
-          default = ["󰕿" "󰖀" "󰕾"];
+          default = [ "󰕿" "󰖀" "󰕾" ];
           headphone = "󰋋";
           headset = "󰋎";
         };
@@ -76,10 +79,10 @@ in {
         format-charging = "{icon}󱐋 {capacity}%";
         format-discharging = "{icon}󰚥 {capacity}%";
         format-icons = {
-            high = "󱊣";
-            medium = "󱊢";
-            low = "󱊡";
-            critical = "󰂎";
+          high = "󱊣";
+          medium = "󱊢";
+          low = "󱊡";
+          critical = "󰂎";
         };
         tooltip = false;
       };

@@ -1,7 +1,15 @@
+{ host, ... }:
+
 let
   leader = " ";
-in {
-  imports = [./autocmds.nix ./keymaps.nix ./options.nix ./plugins];
+in
+{
+  imports = [
+    ./autocmds.nix
+    ./keymaps.nix
+    ./options.nix
+    (import ./plugins { inherit host; })
+  ];
   programs.nixvim = {
     enable = true;
     globals = {

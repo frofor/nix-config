@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+{
   programs.nixvim.plugins.dap = {
     enable = true;
     adapters.executables.lldb.command = "${pkgs.lldb}/bin/lldb-dap";

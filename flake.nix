@@ -23,7 +23,7 @@
           home-manager = {
             users."${user}" = import ./home;
             sharedModules = [nixvim.homeModules.nixvim];
-            extraSpecialArgs = { inherit user; };
+            extraSpecialArgs = { inherit user host; };
           };
         }
       ];

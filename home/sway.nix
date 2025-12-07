@@ -1,10 +1,13 @@
-{ font, ... }: let
+{ font, ... }:
+
+let
   mod = "Mod4";
   left = "h";
   right = "l";
   up = "k";
   down = "j";
-in {
+in
+{
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -20,7 +23,7 @@ in {
         "${down}" = "resize grow height 25 px";
         "${up}" = "resize shrink height 25 px";
         "${right}" = "resize grow width 25 px";
-        "escape" = "mode default";
+        escape = "mode default";
       };
       startup = [
         { command = "librewolf"; }
@@ -67,16 +70,16 @@ in {
         "${mod}+minus" = "scratchpad show";
         "${mod}+shift+minus" = "move scratchpad";
         "${mod}+shift+space" = "floating toggle";
-        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-        "XF86AudioPlay" = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        "XF86AudioPause" = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        "XF86AudioStop" = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        "XF86AudioPrev" = "exec echo playlist-prev | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        "XF86AudioNext" = "exec echo playlist-next | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        "XF86MonBrightnessDown" = "exec brightnessctl s 5%-";
-        "XF86MonBrightnessUp" = "exec brightnessctl s +5%";
+        XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+        XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        XF86AudioPlay = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
+        XF86AudioPause = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
+        XF86AudioStop = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
+        XF86AudioPrev = "exec echo playlist-prev | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
+        XF86AudioNext = "exec echo playlist-next | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
+        XF86MonBrightnessDown = "exec brightnessctl s 5%-";
+        XF86MonBrightnessUp = "exec brightnessctl s +5%";
       };
       bars = [{ command = "waybar"; }];
       window = {
@@ -84,7 +87,7 @@ in {
         border = 1;
       };
       fonts = {
-        names = [font];
+        names = [ font ];
         style = "Regular";
         size = 10.0;
       };

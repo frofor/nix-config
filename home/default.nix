@@ -1,17 +1,20 @@
-{ pkgs, user, ... }: let
+{ pkgs, user, host, ... }:
+
+let
   home = "/home/${user}";
   email = "18nraywczifc@protonmail.com";
   gpgKey = "35F577EAAE047585";
   font = "Iosevka Nerd Font Propo";
   fontMono = "Iosevka Nerd Font";
-in {
+in
+{
   imports = [
     (import ./foot.nix { font = fontMono; })
     (import ./git.nix { inherit user email gpgKey; })
     ./gpg.nix
     ./keepassxc.nix
     ./mpv.nix
-    ./nixvim
+    (import ./nixvim { inherit host; })
     (import ./sway.nix { inherit font; })
     (import ./waybar.nix { inherit font; })
     ./xdg.nix

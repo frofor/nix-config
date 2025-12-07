@@ -1,7 +1,10 @@
-{ config, ... }: let
+{ config, ... }:
+
+let
   inherit (config.lib.nixvim) listToUnkeyedAttrs;
   layoutPreset = "function() return vim.o.columns >= 80 and 'default' or 'vertical' end";
-in {
+in
+{
   programs.nixvim.plugins.snacks = {
     enable = true;
     settings.picker = {

@@ -14,7 +14,7 @@
         }
       '';
       formatting = {
-        fields = ["abbr"];
+        fields = [ "abbr" ];
         format = ''
           function(_, item)
               local max_len = 30
