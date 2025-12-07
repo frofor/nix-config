@@ -30,10 +30,16 @@
     { mode = [ "n" "x" ]; key = "<c-n>"; action = "<esc>:'<,'>normal "; }
     { mode = [ "n" "x" ]; key = "<c-s>"; action = "<esc>:'<,'>substitute/\\V"; }
     { mode = [ "n" ]; key = "<leader>F"; action = ":lua vim.lsp.buf.format()<cr>"; }
+    { mode = [ "n" ]; key = "<leader>R"; action = ":lua vim.lsp.buf.rename()<cr>"; }
     { mode = [ "n" ]; key = "<leader> "; action = ":lua Snacks.picker.resume()<cr>"; }
     { mode = [ "n" ]; key = "<leader>/"; action = ":lua Snacks.picker.grep()<cr>"; }
     { mode = [ "n" ]; key = "<leader>f"; action = ":lua Snacks.picker.files()<cr>"; }
-    { mode = [ "n" ]; key = "<leader>c"; action = ":lua Snacks.picker.files({ cwd = \"~/nix-config\" })<cr>"; }
+    {
+      mode = [ "n" ];
+      key = "<leader>c";
+      action = ":lua Snacks.picker.files({ cwd = \"~/nix-config\" })<cr>";
+    }
+    { mode = [ "n" ]; key = "<leader>r"; action = ":lua Snacks.picker.recent()<cr>"; }
     { mode = [ "n" ]; key = "<leader>b"; action = ":lua Snacks.picker.buffers()<cr>"; }
     { mode = [ "n" ]; key = "<leader>e"; action = ":lua Snacks.explorer()<cr>"; }
     { mode = [ "n" ]; key = "<leader>h"; action = ":lua Snacks.picker.help()<cr>"; }
@@ -48,8 +54,26 @@
     { mode = [ "n" ]; key = "<leader>ds"; action = ":DapContinue<cr>"; }
     { mode = [ "n" ]; key = "<leader>dn"; action = ":DapStepOver<cr>"; }
     { mode = [ "n" ]; key = "<leader>di"; action = ":DapStepInto<cr>"; }
-    { mode = [ "n" ]; key = "<leader>do"; action = ":DapStepOut<cr>"; }
+    { mode = [ "n" ]; key = "<leader>dI"; action = ":DapStepOut<cr>"; }
     { mode = [ "n" ]; key = "<leader>dc"; action = ":lua require('dap').run_to_cursor()<cr>"; }
-    { mode = [ "n" ]; key = "<leader>dr"; action = ":DapToggleRepl<cr>"; }
+    {
+      mode = [ "n" ];
+      key = "<leader>dr";
+      action.__raw = ''
+        function()
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local name = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
+                if name:match('/%[dap%-repl%-(%d+)%]$') then
+                    vim.api.nvim_win_close(win, true)
+                    require('dap').repl.close()
+                    return
+                end
+            end
+
+            require('dap').repl.open()
+            vim.cmd('wincmd j | startinsert')
+        end
+      '';
+    }
   ];
 }

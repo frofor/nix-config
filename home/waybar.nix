@@ -34,6 +34,13 @@ in
       "sway/workspaces" = {
         all-outputs = true;
         warp-on-scroll = false;
+        format = "{icon}";
+        format-icons = {
+          "1" = "";
+          "2" = "󰈹";
+          "3" = "󰌆";
+          urgent = "";
+        };
         tooltip = false;
       };
       "sway/scratchpad" = {
