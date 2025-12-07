@@ -29,6 +29,7 @@
     { mode = [ "n" ]; key = "<c-s-l>"; action = ":vertical resize +5<cr>"; }
     { mode = [ "n" "x" ]; key = "<c-n>"; action = "<esc>:'<,'>normal "; }
     { mode = [ "n" "x" ]; key = "<c-s>"; action = "<esc>:'<,'>substitute/\\V"; }
+    { mode = [ "n" ]; key = "<leader>F"; action = ":lua vim.lsp.buf.format()<cr>"; }
     { mode = [ "n" ]; key = "<leader> "; action = ":lua Snacks.picker.resume()<cr>"; }
     { mode = [ "n" ]; key = "<leader>/"; action = ":lua Snacks.picker.grep()<cr>"; }
     { mode = [ "n" ]; key = "<leader>f"; action = ":lua Snacks.picker.files()<cr>"; }
