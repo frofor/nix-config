@@ -1,6 +1,8 @@
-{ pkgs, user, host, ... }: {
-  imports = [./hardware.nix];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+{ pkgs, user, host, ... }:
+
+{
+  imports = [ ./hardware.nix ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
   hardware.graphics.enable = true;
   boot.loader = {
@@ -13,17 +15,17 @@
     hostName = host;
     networkmanager = {
       enable = true;
-      plugins = with pkgs; [networkmanager-openvpn];
+      plugins = with pkgs; [ networkmanager-openvpn ];
     };
   };
   users.users."${user}" = {
     isNormalUser = true;
-    extraGroups = ["wheel" "input" "audio" "networkmanager"];
+    extraGroups = [ "wheel" "input" "audio" "networkmanager" ];
     shell = pkgs.zsh;
   };
   services = {
     getty.autologinUser = user;
-    openvpn.servers = {};
+    openvpn.servers = { };
     pulseaudio.enable = true;
   };
   programs.zsh.enable = true;

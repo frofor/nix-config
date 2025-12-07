@@ -19,7 +19,7 @@ in
     ./skim.nix
     (import ./sway.nix { inherit font mpvSocket; })
     (import ./waybar.nix { inherit font; })
-    (import  ./xdg.nix { inherit home; })
+    (import ./xdg.nix { inherit home; })
     ./zsh.nix
   ];
   home = {
@@ -38,7 +38,6 @@ in
       mpv
       nerd-fonts.iosevka
       ripgrep
-      rustc
       rustfmt
       socat
       skim

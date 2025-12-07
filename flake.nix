@@ -10,23 +10,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, nixvim, ... }: let
-    inherit (nixpkgs.lib) nixosSystem;
-    user = "frofor";
-    host = "nixos";
-  in {
-    nixosConfigurations."${host}" = nixosSystem {
-      modules = [
-        ({ pkgs, ... }: import ./host { inherit pkgs user host; })
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            users."${user}" = import ./home;
-            sharedModules = [nixvim.homeModules.nixvim];
-            extraSpecialArgs = { inherit user host; };
-          };
-        }
-      ];
+  outputs = { nixpkgs, home-manager, nixvim, ... }:
+    let
+      inherit (nixpkgs.lib) nixosSystem;
+      user = "frofor";
+      host = "nixos";
+    in
+    {
+      nixosConfigurations."${host}" = nixosSystem {
+        modules = [
+          ({ pkgs, ... }: import ./host { inherit pkgs user host; })
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              users."${user}" = import ./home;
+              sharedModules = [ nixvim.homeModules.nixvim ];
+              extraSpecialArgs = { inherit user host; };
+            };
+          }
+        ];
+      };
     };
-  };
 }
