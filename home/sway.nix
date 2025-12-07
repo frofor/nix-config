@@ -1,4 +1,4 @@
-{ font, ... }:
+{ font, mpvSocket }:
 
 let
   mod = "Mod4";
@@ -19,10 +19,10 @@ in
         "5" = [{ app_id = "gimp"; }];
       };
       modes.resize = {
-        "${left}" = "resize shrink width 25 px";
-        "${down}" = "resize grow height 25 px";
-        "${up}" = "resize shrink height 25 px";
-        "${right}" = "resize grow width 25 px";
+        ${left} = "resize shrink width 25 px";
+        ${down} = "resize grow height 25 px";
+        ${up} = "resize shrink height 25 px";
+        ${right} = "resize grow width 25 px";
         escape = "mode default";
       };
       startup = [
@@ -73,11 +73,11 @@ in
         XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
         XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-        XF86AudioPlay = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        XF86AudioPause = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        XF86AudioStop = "exec echo cycle pause | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        XF86AudioPrev = "exec echo playlist-prev | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
-        XF86AudioNext = "exec echo playlist-next | socat - \"$XDG_RUNTIME_DIR\"/mpv.sock";
+        XF86AudioPlay = "exec echo cycle pause | socat - \"${mpvSocket}\"";
+        XF86AudioPause = "exec echo cycle pause | socat - \"${mpvSocket}\"";
+        XF86AudioStop = "exec echo cycle pause | socat - \"${mpvSocket}\"";
+        XF86AudioPrev = "exec echo playlist-prev | socat - \"${mpvSocket}\"";
+        XF86AudioNext = "exec echo playlist-next | socat - \"${mpvSocket}\"";
         XF86MonBrightnessDown = "exec brightnessctl s 5%-";
         XF86MonBrightnessUp = "exec brightnessctl s +5%";
       };

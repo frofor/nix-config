@@ -1,12 +1,12 @@
-let
-  inherit (builtins) getEnv;
-in
+{ mpvSocket }:
+
 {
   programs.mpv = {
     enable = true;
     config = {
+      input-ipc-server = mpvSocket;
+      pause = "yes";
       shuffle = "yes";
-      input-ipc-server = getEnv "XDG_RUNTIME_DIR";
     };
   };
 }

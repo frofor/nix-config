@@ -31,6 +31,7 @@
     { mode = [ "n" "x" ]; key = "<c-s>"; action = "<esc>:'<,'>substitute/\\V"; }
     { mode = [ "n" ]; key = "<leader>F"; action = ":lua vim.lsp.buf.format()<cr>"; }
     { mode = [ "n" ]; key = "<leader>R"; action = ":lua vim.lsp.buf.rename()<cr>"; }
+    { mode = [ "n" ]; key = "<leader>D"; action = ":lua vim.diagnostic.open_float()<cr>"; }
     { mode = [ "n" ]; key = "<leader> "; action = ":lua Snacks.picker.resume()<cr>"; }
     { mode = [ "n" ]; key = "<leader>/"; action = ":lua Snacks.picker.grep()<cr>"; }
     { mode = [ "n" ]; key = "<leader>f"; action = ":lua Snacks.picker.files()<cr>"; }
@@ -51,7 +52,7 @@
     { mode = [ "n" ]; key = "gs"; action = ":lua Snacks.picker.lsp_symbols()<cr>"; }
     { mode = [ "n" ]; key = "gS"; action = ":lua Snacks.picker.lsp_workspace_symbols()<cr>"; }
     { mode = [ "n" ]; key = "<leader>db"; action = ":DapToggleBreakpoint<cr>"; }
-    { mode = [ "n" ]; key = "<leader>ds"; action = ":DapContinue<cr>"; }
+    { mode = [ "n" ]; key = "<leader>dN"; action = ":DapContinue<cr>"; }
     { mode = [ "n" ]; key = "<leader>dn"; action = ":DapStepOver<cr>"; }
     { mode = [ "n" ]; key = "<leader>di"; action = ":DapStepInto<cr>"; }
     { mode = [ "n" ]; key = "<leader>dI"; action = ":DapStepOut<cr>"; }

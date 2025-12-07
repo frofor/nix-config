@@ -1,4 +1,4 @@
-{ host, ... }:
+{ host }:
 
 let
   options = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.\"${host}\".options";

@@ -1,8 +1,8 @@
-{ font, ... }:
+{ fontMono }:
 
 {
   programs.foot = {
     enable = true;
-    settings.main.font = "${font}:size=14";
+    settings.main.font = "${fontMono}:size=14";
   };
 }

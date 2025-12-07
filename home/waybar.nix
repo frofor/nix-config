@@ -1,4 +1,4 @@
-{ font, ... }:
+{ font }:
 
 let
   color = {
@@ -36,7 +36,7 @@ in
         warp-on-scroll = false;
         format = "{icon}";
         format-icons = {
-          "1" = "";
+          "1" = "󰋜";
           "2" = "󰈹";
           "3" = "󰌆";
           urgent = "";

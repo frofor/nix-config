@@ -4,18 +4,20 @@ let
   home = "/home/${user}";
   email = "18nraywczifc@protonmail.com";
   gpgKey = "35F577EAAE047585";
-  font = "Iosevka Nerd Font Propo";
-  fontMono = "Iosevka Nerd Font";
+  font = "Iosevka NFP";
+  fontMono = "Iosevka NF";
+  mpvSocket = "/tmp/mpv.sock";
 in
 {
   imports = [
-    (import ./foot.nix { font = fontMono; })
+    (import ./foot.nix { inherit fontMono; })
     (import ./git.nix { inherit user email gpgKey; })
     ./gpg.nix
     ./keepassxc.nix
-    ./mpv.nix
+    (import ./mpv.nix { inherit mpvSocket; })
     (import ./nixvim { inherit host; })
-    (import ./sway.nix { inherit font; })
+    ./skim.nix
+    (import ./sway.nix { inherit font mpvSocket; })
     (import ./waybar.nix { inherit font; })
     (import  ./xdg.nix { inherit home; })
     ./zsh.nix

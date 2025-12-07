@@ -1,22 +1,15 @@
-{ host, ... }:
+{ host }:
 
-let
-  leader = " ";
-in
 {
   imports = [
     ./autocmds.nix
+    ./cmp.nix
+    ./dap.nix
     ./keymaps.nix
+    (import ./lsp { inherit host; })
     ./options.nix
-    (import ./plugins { inherit host; })
+    ./snacks.nix
+    ./supermaven.nix
   ];
-  programs.nixvim = {
-    enable = true;
-    globals = {
-      mapleader = leader;
-      maplocalleader = leader;
-    };
-    colorscheme = "retrobox";
-    clipboard.register = "unnamedplus";
-  };
+  programs.nixvim.enable = true;
 }
