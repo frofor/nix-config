@@ -27,7 +27,6 @@ in
       swapfile = false;
       undofile = true;
     };
-    clipboard.register = "unnamedplus";
     colorscheme = "retrobox";
   };
 }

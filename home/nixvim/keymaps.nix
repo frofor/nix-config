@@ -1,8 +1,10 @@
 {
   programs.nixvim.keymaps = [
-    { mode = [ "n" "v" "x" ]; key = ";"; action = ":"; }
+    { mode = [ "n" "v" ]; key = ";"; action = ":"; }
     { mode = [ "n" ]; key = "<leader>w"; action = ":update<cr>"; }
     { mode = [ "n" ]; key = "<leader>x"; action = ":quitall!<cr>"; }
+    { mode = [ "n" "v" ]; key = "<leader>y"; action = "\"+y"; }
+    { mode = [ "n" "v" ]; key = "<leader>p"; action = "\"+p"; }
     { mode = [ "n" ]; key = "<c-1>"; action = ":buffer 1<cr>"; }
     { mode = [ "n" ]; key = "<c-2>"; action = ":buffer 2<cr>"; }
     { mode = [ "n" ]; key = "<c-3>"; action = ":buffer 3<cr>"; }
@@ -27,8 +29,8 @@
     { mode = [ "n" ]; key = "<c-s-j>"; action = ":resize +2<cr>"; }
     { mode = [ "n" ]; key = "<c-s-k>"; action = ":resize -2<cr>"; }
     { mode = [ "n" ]; key = "<c-s-l>"; action = ":vertical resize +5<cr>"; }
-    { mode = [ "n" "x" ]; key = "<c-n>"; action = "<esc>:'<,'>normal "; }
-    { mode = [ "n" "x" ]; key = "<c-s>"; action = "<esc>:'<,'>substitute/\\V"; }
+    { mode = [ "n" "v" ]; key = "<c-n>"; action = "<esc>:'<,'>normal "; }
+    { mode = [ "n" "v" ]; key = "<c-s>"; action = "<esc>:'<,'>substitute/\\V"; }
     { mode = [ "n" ]; key = "<leader>F"; action = ":lua vim.lsp.buf.format()<cr>"; }
     { mode = [ "n" ]; key = "<leader>R"; action = ":lua vim.lsp.buf.rename()<cr>"; }
     { mode = [ "n" ]; key = "<leader>D"; action = ":lua vim.diagnostic.open_float()<cr>"; }
