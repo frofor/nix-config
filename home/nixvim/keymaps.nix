@@ -58,7 +58,16 @@
     { mode = [ "n" ]; key = "<leader>ha"; action = ":Gitsigns stage_hunk<cr>"; }
     { mode = [ "n" ]; key = "<leader>hr"; action = ":Gitsigns reset_hunk<cr>"; }
     { mode = [ "n" ]; key = "<leader>ho"; action = ":Gitsigns preview_hunk<cr>"; }
-    { mode = [ "n" ]; key = "<leader>hd"; action = ":Gitsigns diffthis | wincmd h<cr>"; }
+    {
+      mode = [ "n" ];
+      key = "<leader>hd";
+      action.__raw = ''
+        function()
+            require('gitsigns').diffthis()
+            vim.cmd.wincmd('h')
+        end
+      '';
+    }
     { mode = [ "n" ]; key = "<leader>hc"; action = ":Gitsigns show_commit<cr>"; }
     { mode = [ "n" ]; key = "<leader>hb"; action = ":Gitsigns blame_line<cr>"; }
     { mode = [ "n" ]; key = "<leader>hB"; action = ":Gitsigns blame<cr>"; }
