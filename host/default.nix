@@ -18,7 +18,7 @@
       plugins = with pkgs; [ networkmanager-openvpn ];
     };
   };
-  users.users."${user}" = {
+  users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "input" "audio" "networkmanager" ];
     shell = pkgs.zsh;

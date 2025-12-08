@@ -7,6 +7,8 @@ let
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
   mpvSocket = "/tmp/mpv.sock";
+  mpvPackages = with pkgs; [ socat mpv ];
+  nixvimPackages = with pkgs; [ fd ripgrep ];
 in
 {
   imports = [
@@ -28,21 +30,13 @@ in
     homeDirectory = home;
     packages = with pkgs; [
       brightnessctl
-      cargo
-      fd
-      gcc
       gnupg
       keepassxc
       librewolf
-      lldb
-      mpv
       nerd-fonts.iosevka
-      ripgrep
-      rustfmt
-      socat
       skim
       sway
       tmux
-    ];
+    ] ++ mpvPackages ++ nixvimPackages;
   };
 }

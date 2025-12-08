@@ -1,7 +1,8 @@
 { host }:
 
 let
-  options = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.\"${host}\".options";
+  options =
+    "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.\"${host}\".options";
 in
 {
   programs.nixvim.plugins.lsp.servers.nixd = {
