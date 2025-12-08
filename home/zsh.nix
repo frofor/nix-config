@@ -1,22 +1,45 @@
+{ config, ... }:
+
 {
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
+    autocd = true;
     defaultKeymap = "viins";
-    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    history.saveNoDups = true;
+    autosuggestion = {
+      enable = true;
+      highlight = "fg=black,bg=green,bold";
+    };
+    history = {
+      append = true;
+      saveNoDups = true;
+    };
     initContent = ''
       if [ "$TTY" = /dev/tty1 ]; then
           exec sway
       fi
 
       PS1='%F{red}\%f%B%F{green}%1~%f%b %B%F{red}->%f%b '
+
+      zstyle ':completion:*' completer _complete _ignored _correct _approximate
+      zstyle ':completion:*' completions 1
+      zstyle ':completion:*' file-sort name
+      zstyle ':completion:*' glob 1
+      zstyle ':completion:*' ignore-parents parent pwd
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*' 'r:|=**'
+      zstyle ':completion:*' max-errors 2
+      zstyle ':completion:*' menu select
+      zstyle ':completion:*' substitute 1
     '';
     shellAliases = {
       s = "sudo";
       v = "nvim";
       g = "git";
       c = "cargo";
+      l = "ls -lhF --group-directories-first --color=auto";
+      ls = "ls -hF --group-directories-first --color=auto";
     };
   };
 }
