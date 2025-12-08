@@ -21,6 +21,7 @@ in
     ./skim.nix
     (import ./sway.nix { inherit font mpvSocket; })
     (import ./waybar.nix { inherit font; })
+    ./wlsunset.nix
     (import ./xdg.nix { inherit home; })
     ./zsh.nix
   ];
@@ -37,6 +38,7 @@ in
       skim
       sway
       tmux
+      wlsunset
     ] ++ mpvPackages ++ nixvimPackages;
   };
 }
