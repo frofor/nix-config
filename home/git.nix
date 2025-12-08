@@ -13,6 +13,8 @@
       init.defaultBranch = "main";
       alias = {
         a = "add";
+        r = "restore";
+        rs = "restore --staged";
         s = "status";
         b = "branch";
         c = "checkout";
