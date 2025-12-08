@@ -13,15 +13,16 @@
       init.defaultBranch = "main";
       alias = {
         a = "add";
-        r = "restore";
-        rs = "restore --staged";
-        s = "status";
         b = "branch";
-        c = "checkout";
-        ci = "commit";
+        c = "commit";
+        co = "checkout";
         d = "diff";
         ds = "diff --staged";
         l = "log --oneline --graph --decorate";
+        p = "push";
+        r = "restore";
+        rs = "restore --staged";
+        s = "status";
       };
     };
   };
