@@ -114,6 +114,7 @@ in
           border-radius: 0;
           color: ${color.white};
           padding: 0px 4px;
+          transition: initial;
       }
 
       #workspaces button:hover {
