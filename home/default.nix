@@ -32,6 +32,7 @@ in
     packages = with pkgs; [
       brightnessctl
       gnupg
+      htop
       keepassxc
       librewolf
       nerd-fonts.iosevka
