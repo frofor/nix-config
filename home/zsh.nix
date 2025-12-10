@@ -3,15 +3,13 @@
 {
   programs.zsh = {
     enable = true;
-    dotDir = "${config.xdg.configHome}/zsh";
+    dotDir = "${config.xdg.dataHome}/zsh";
     autocd = true;
     defaultKeymap = "viins";
     syntaxHighlighting.enable = true;
-    autosuggestion = {
-      enable = true;
-      highlight = "fg=black,bg=green,bold";
-    };
+    autosuggestion.enable = true;
     history = {
+      path = "${config.xdg.dataHome}/zsh/history";
       append = true;
       saveNoDups = true;
     };
@@ -19,8 +17,6 @@
       if [ "$TTY" = /dev/tty1 ]; then
           exec sway
       fi
-
-      PS1='%F{red}\%f%B%F{green}%1~%f%b %B%F{red}->%f%b '
 
       zstyle ':completion:*' completer _complete _ignored _correct _approximate
       zstyle ':completion:*' completions 1

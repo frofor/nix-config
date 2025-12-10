@@ -1,4 +1,4 @@
-{ pkgs, user, host, ... }:
+{ config, pkgs, user, host, ... }:
 
 let
   home = "/home/${user}";
@@ -15,6 +15,7 @@ in
     (import ./foot.nix { inherit fontMono; })
     (import ./git.nix { inherit user email gpgKey; })
     ./gpg.nix
+    ./opencode.nix
     ./keepassxc.nix
     (import ./mpv.nix { inherit mpvSocket; })
     (import ./nixvim { inherit host; })
@@ -36,10 +37,16 @@ in
       keepassxc
       librewolf
       nerd-fonts.iosevka
+      opencode
       skim
       sway
       tmux
       wlsunset
     ] ++ mpvPackages ++ nixvimPackages;
+    sessionVariables = {
+      EDITOR = "nvim";
+      GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+      CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    };
   };
 }
