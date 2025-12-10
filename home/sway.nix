@@ -70,16 +70,16 @@ in
         "${mod}+minus" = "scratchpad show";
         "${mod}+shift+minus" = "move scratchpad";
         "${mod}+shift+space" = "floating toggle";
-        XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-        XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-        XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
+        XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
+        XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
         XF86AudioPlay = "exec echo cycle pause | socat - \"${mpvSocket}\"";
         XF86AudioPause = "exec echo cycle pause | socat - \"${mpvSocket}\"";
         XF86AudioStop = "exec echo cycle pause | socat - \"${mpvSocket}\"";
         XF86AudioPrev = "exec echo playlist-prev | socat - \"${mpvSocket}\"";
         XF86AudioNext = "exec echo playlist-next | socat - \"${mpvSocket}\"";
-        XF86MonBrightnessDown = "exec brightnessctl s 5%-";
-        XF86MonBrightnessUp = "exec brightnessctl s +5%";
+        XF86MonBrightnessDown = "exec brightnessctl s 10%-";
+        XF86MonBrightnessUp = "exec brightnessctl s +10%";
       };
       bars = [{ command = "waybar"; }];
       window = {

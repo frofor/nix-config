@@ -26,7 +26,10 @@
   services = {
     getty.autologinUser = user;
     openvpn.servers = { };
-    pulseaudio.enable = true;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
   };
   programs.zsh.enable = true;
 }
