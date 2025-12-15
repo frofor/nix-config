@@ -43,6 +43,7 @@ in
       tor-browser
       tmux
       wlsunset
+      xdg-utils
     ] ++ mpvPackages ++ nixvimPackages;
     sessionVariables = {
       EDITOR = "nvim";
