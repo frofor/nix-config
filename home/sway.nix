@@ -70,6 +70,8 @@ in
         "${mod}+shift+0" = "move container to workspace number 10";
         "${mod}+minus" = "scratchpad show";
         "${mod}+shift+minus" = "move scratchpad";
+        "${mod}+w" = "layout tabbed";
+        "${mod}+space" = "focus mode_toggle";
         "${mod}+shift+space" = "floating toggle";
         XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
         XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
