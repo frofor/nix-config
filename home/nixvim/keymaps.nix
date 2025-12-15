@@ -71,12 +71,12 @@
     { mode = [ "n" ]; key = "<leader>hc"; action = ":Gitsigns show_commit<cr>"; }
     { mode = [ "n" ]; key = "<leader>hb"; action = ":Gitsigns blame_line<cr>"; }
     { mode = [ "n" ]; key = "<leader>hB"; action = ":Gitsigns blame<cr>"; }
-    { mode = [ "n" ]; key = "<leader>db"; action = ":DapToggleBreakpoint<cr>"; }
-    { mode = [ "n" ]; key = "<leader>dN"; action = ":DapContinue<cr>"; }
+    { mode = [ "n" ]; key = "<leader>ds"; action = ":DapContinue<cr>"; }
     { mode = [ "n" ]; key = "<leader>dn"; action = ":DapStepOver<cr>"; }
     { mode = [ "n" ]; key = "<leader>di"; action = ":DapStepInto<cr>"; }
-    { mode = [ "n" ]; key = "<leader>dI"; action = ":DapStepOut<cr>"; }
+    { mode = [ "n" ]; key = "<leader>do"; action = ":DapStepOut<cr>"; }
     { mode = [ "n" ]; key = "<leader>dc"; action = ":lua require('dap').run_to_cursor()<cr>"; }
+    { mode = [ "n" ]; key = "<leader>db"; action = ":DapToggleBreakpoint<cr>"; }
     {
       mode = [ "n" ];
       key = "<leader>dr";
