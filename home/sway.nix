@@ -33,6 +33,7 @@ in
       keybindings = {
         "${mod}+return" = "exec foot";
         "${mod}+b" = "exec librewolf";
+        "${mod}+t" = "exec tor-browser";
         "${mod}+p" = "exec keepassxc";
         "${mod}+n" = "exec foot -e nmtui-connect";
         "${mod}+f" = "fullscreen";

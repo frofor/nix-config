@@ -40,6 +40,7 @@ in
       opencode
       skim
       sway
+      tor-browser
       tmux
       wlsunset
     ] ++ mpvPackages ++ nixvimPackages;
