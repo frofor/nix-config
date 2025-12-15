@@ -36,6 +36,7 @@ in
         "${mod}+t" = "exec tor-browser";
         "${mod}+p" = "exec keepassxc";
         "${mod}+n" = "exec foot -e nmtui-connect";
+        "${mod}+m" = "exec foot -e htop";
         "${mod}+f" = "fullscreen";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
