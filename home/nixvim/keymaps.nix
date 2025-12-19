@@ -40,6 +40,7 @@
     { mode = [ "n" ]; key = "gS"; action = ":lua Snacks.picker.lsp_workspace_symbols()<cr>"; }
     { mode = [ "n" ]; key = "<leader>F"; action = ":lua vim.lsp.buf.format()<cr>"; }
     { mode = [ "n" ]; key = "<leader>R"; action = ":lua vim.lsp.buf.rename()<cr>"; }
+    { mode = [ "n" ]; key = "<leader>a"; action = ":lua vim.lsp.buf.code_action()<cr>"; }
     { mode = [ "n" ]; key = "<leader>D"; action = ":lua vim.diagnostic.open_float()<cr>"; }
     { mode = [ "n" ]; key = "<leader> "; action = ":lua Snacks.picker.resume()<cr>"; }
     { mode = [ "n" ]; key = "<leader>/"; action = ":lua Snacks.picker.grep()<cr>"; }
