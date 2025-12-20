@@ -14,5 +14,12 @@
       templates = "${home}/templates";
       videos = "${home}/videos";
     };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "image/jpeg" = "librewolf.desktop";
+        "image/png" = "librewolf.desktop";
+      };
+    };
   };
 }
