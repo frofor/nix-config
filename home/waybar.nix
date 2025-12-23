@@ -14,86 +14,95 @@ in
 {
   programs.waybar = {
     enable = true;
-    settings = [{
-      spacing = 30;
-      modules-left = [
-        "sway/workspaces"
-        "sway/scratchpad"
-        "sway/mode"
-        "sway/window"
-      ];
-      modules-center = [
-        "clock"
-      ];
-      modules-right = [
-        "keyboard-state"
-        "backlight"
-        "pulseaudio"
-        "battery"
-      ];
-      "sway/workspaces" = {
-        all-outputs = true;
-        warp-on-scroll = false;
-        format = "{icon}";
-        format-icons = {
-          "1" = "󰋜";
-          "2" = "󰈹";
-          "3" = "󰌆";
-          urgent = "";
+    settings = [
+      {
+        spacing = 30;
+        modules-left = [
+          "sway/workspaces"
+          "sway/scratchpad"
+          "sway/mode"
+          "sway/window"
+        ];
+        modules-center = [
+          "clock"
+        ];
+        modules-right = [
+          "keyboard-state"
+          "backlight"
+          "pulseaudio"
+          "battery"
+        ];
+        "sway/workspaces" = {
+          all-outputs = true;
+          warp-on-scroll = false;
+          format = "{icon}";
+          format-icons = {
+            "1" = "󰋜";
+            "2" = "󰈹";
+            "3" = "󰌆";
+            urgent = "";
+          };
+          tooltip = false;
         };
-        tooltip = false;
-      };
-      "sway/scratchpad" = {
-        format = "{icon} {count}";
-        format-icons = [ "" "" ];
-        tooltip = false;
-      };
-      "sway/mode" = {
-        format = "<span text-transform=\"uppercase\">-- {} --</span>";
-        tooltip = false;
-      };
-      "sway/window".tooltip = false;
-      clock = {
-        format = "󱑎 {:%R 󰃭 %d.%m}";
-        tooltip = false;
-      };
-      backlight = {
-        format = " {percent}%";
-        tooltip = false;
-      };
-      pulseaudio = {
-        on-scroll-up = "";
-        on-scroll-down = "";
-        format = "{icon} {volume}% {format_source}";
-        format-muted = "<span color=\"${color.red}\">󰖁</span> {format_source}";
-        format-source = " {volume}%";
-        format-source-muted = "<span color=\"${color.red}\"></span>";
-        format-icons = {
-          default = [ "󰕿" "󰖀" "󰕾" ];
-          headphone = "󰋋";
-          headset = "󰋎";
+        "sway/scratchpad" = {
+          format = "{icon} {count}";
+          format-icons = [
+            ""
+            ""
+          ];
+          tooltip = false;
         };
-        tooltip = false;
-      };
-      battery = {
-        states = {
-          high = 100;
-          medium = 60;
-          low = 40;
-          critical = 20;
+        "sway/mode" = {
+          format = "<span text-transform=\"uppercase\">-- {} --</span>";
+          tooltip = false;
         };
-        format = "{icon}  {capacity}%";
-        format-charging = "{icon}󱐋 {capacity}%";
-        format-discharging = "{icon}󰚥 {capacity}%";
-        format-icons = {
-          high = "󱊣";
-          medium = "󱊢";
-          low = "󱊡";
-          critical = "󰂎";
+        "sway/window".tooltip = false;
+        clock = {
+          format = "󱑎 {:%R 󰃭 %d.%m}";
+          tooltip = false;
         };
-        tooltip = false;
-      };
-    }];
+        backlight = {
+          format = " {percent}%";
+          tooltip = false;
+        };
+        pulseaudio = {
+          on-scroll-up = "";
+          on-scroll-down = "";
+          format = "{icon} {volume}% {format_source}";
+          format-muted = "<span color=\"${color.red}\">󰖁</span> {format_source}";
+          format-source = " {volume}%";
+          format-source-muted = "<span color=\"${color.red}\"></span>";
+          format-icons = {
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
+            headphone = "󰋋";
+            headset = "󰋎";
+          };
+          tooltip = false;
+        };
+        battery = {
+          states = {
+            high = 100;
+            medium = 60;
+            low = 40;
+            critical = 20;
+          };
+          format = "{icon}  {capacity}%";
+          format-charging = "{icon}󱐋 {capacity}%";
+          format-discharging = "{icon}󰚥 {capacity}%";
+          format-icons = {
+            high = "󱊣";
+            medium = "󱊢";
+            low = "󱊡";
+            critical = "󰂎";
+          };
+          tooltip = false;
+        };
+      }
+    ];
     style = ''
       * {
           font-family: ${font}, sans-serif;

@@ -5,12 +5,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
-  outputs = { nixpkgs, home-manager, nixvim, ... }:
+  outputs =
+    { nixpkgs, home-manager, ... }:
     let
       inherit (nixpkgs.lib) nixosSystem;
       user = "frofor";
@@ -24,7 +21,6 @@
           {
             home-manager = {
               users.${user} = import ./home;
-              sharedModules = [ nixvim.homeModules.nixvim ];
               extraSpecialArgs = { inherit user host; };
             };
           }

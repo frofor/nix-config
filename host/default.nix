@@ -1,8 +1,16 @@
-{ pkgs, user, host, ... }:
+{
+  pkgs,
+  user,
+  host,
+  ...
+}:
 
 {
   imports = [ ./hardware.nix ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   system.stateVersion = "25.11";
   hardware.graphics.enable = true;
   boot.loader = {
@@ -20,7 +28,12 @@
   };
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "audio" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "input"
+      "audio"
+      "networkmanager"
+    ];
     shell = pkgs.zsh;
   };
   services = {

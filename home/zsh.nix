@@ -30,10 +30,7 @@
       zstyle ':completion:*' substitute 1
     '';
     shellAliases = {
-      s = "sudo";
-      v = "nvim";
       g = "git";
-      c = "cargo";
       l = "ls -lhF --group-directories-first --color=auto";
       ls = "ls -hF --group-directories-first --color=auto";
     };

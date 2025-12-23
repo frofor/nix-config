@@ -1,4 +1,9 @@
-{ config, pkgs, user, host, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 
 let
   home = "/home/${user}";
@@ -7,18 +12,30 @@ let
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
   mpvSocket = "/tmp/mpv.sock";
-  mpvPackages = with pkgs; [ socat mpv ];
-  nixvimPackages = with pkgs; [ fd ripgrep ];
+  mpvPkgs = with pkgs; [
+    socat
+    mpv
+  ];
+  swayPkgs = with pkgs; [
+    brightnessctl
+    grim
+    mako
+    slurp
+    sway
+    wlsunset
+  ];
 in
 {
   imports = [
     (import ./foot.nix { inherit fontMono; })
     (import ./git.nix { inherit user email gpgKey; })
     ./gpg.nix
+    ./helix.nix
+    ./jjui.nix
+    (import ./jujutsu.nix { inherit user email gpgKey; })
     ./opencode.nix
     ./keepassxc.nix
     (import ./mpv.nix { inherit mpvSocket; })
-    (import ./nixvim { inherit host; })
     ./skim.nix
     (import ./sway.nix { inherit font mpvSocket; })
     (import ./waybar.nix { inherit font; })
@@ -30,23 +47,23 @@ in
     stateVersion = "25.11";
     username = user;
     homeDirectory = home;
-    packages = with pkgs; [
-      brightnessctl
-      gnupg
-      htop
-      keepassxc
-      librewolf
-      nerd-fonts.iosevka
-      opencode
-      skim
-      sway
-      tor-browser
-      tmux
-      wlsunset
-      xdg-utils
-    ] ++ mpvPackages ++ nixvimPackages;
+    packages =
+      with pkgs;
+      [
+        gimp
+        gnupg
+        htop
+        librewolf
+        nerd-fonts.iosevka
+        nil
+        opencode
+        skim
+        tor-browser
+        xdg-utils
+      ]
+      ++ mpvPkgs
+      ++ swayPkgs;
     sessionVariables = {
-      EDITOR = "nvim";
       GNUPGHOME = "${config.xdg.dataHome}/gnupg";
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
     };
