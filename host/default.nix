@@ -38,10 +38,52 @@
   };
   services = {
     getty.autologinUser = user;
-    openvpn.servers = { };
     pipewire = {
       enable = true;
       pulse.enable = true;
+    };
+    openvpn.servers = {
+      canada = {
+        config = "config /home/frofor/documents/vpn/canada.ovpn";
+        updateResolvConf = true;
+      };
+      japan = {
+        config = "config /home/frofor/documents/vpn/japan.ovpn";
+        updateResolvConf = true;
+      };
+      mexico = {
+        config = "config /home/frofor/documents/vpn/mexico.ovpn";
+        updateResolvConf = true;
+      };
+      netherlands = {
+        config = "config /home/frofor/documents/vpn/netherlands.ovpn";
+        updateResolvConf = true;
+      };
+      norway = {
+        config = "config /home/frofor/documents/vpn/norway.ovpn";
+        updateResolvConf = true;
+      };
+      poland = {
+        config = "config /home/frofor/documents/vpn/poland.ovpn";
+        updateResolvConf = true;
+      };
+      romania = {
+        config = "config /home/frofor/documents/vpn/romania.ovpn";
+        updateResolvConf = true;
+      };
+      singapore = {
+        config = "config /home/frofor/documents/vpn/singapore.ovpn";
+        updateResolvConf = true;
+      };
+      switzerland = {
+        config = "config /home/frofor/documents/vpn/switzerland.ovpn";
+        updateResolvConf = true;
+      };
+      united-states = {
+        config = "config /home/frofor/documents/vpn/united-states.ovpn";
+        updateResolvConf = true;
+        autoStart = true;
+      };
     };
   };
   programs.zsh.enable = true;
