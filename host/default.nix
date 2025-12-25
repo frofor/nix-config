@@ -46,43 +46,51 @@
       canada = {
         config = "config /home/frofor/documents/vpn/canada.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       japan = {
         config = "config /home/frofor/documents/vpn/japan.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       mexico = {
         config = "config /home/frofor/documents/vpn/mexico.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       netherlands = {
         config = "config /home/frofor/documents/vpn/netherlands.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       norway = {
         config = "config /home/frofor/documents/vpn/norway.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       poland = {
         config = "config /home/frofor/documents/vpn/poland.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       romania = {
         config = "config /home/frofor/documents/vpn/romania.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       singapore = {
         config = "config /home/frofor/documents/vpn/singapore.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       switzerland = {
         config = "config /home/frofor/documents/vpn/switzerland.ovpn";
         updateResolvConf = true;
+        autoStart = false;
       };
       united-states = {
         config = "config /home/frofor/documents/vpn/united-states.ovpn";
         updateResolvConf = true;
-        autoStart = true;
       };
     };
   };
