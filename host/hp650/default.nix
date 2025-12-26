@@ -9,8 +9,17 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_US.UTF-8";
+  security = {
+    sudo.enable = false;
+    doas = {
+      enable = true;
+      extraRules = [{
+        users = [ user ];
+        keepEnv = true;
+        persist = true;
+      }];
+    };
+  };
   networking = {
     hostName = host;
     networkmanager = {
@@ -18,6 +27,8 @@
       plugins = with pkgs; [ networkmanager-openvpn ];
     };
   };
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_US.UTF-8";
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "input" "audio" "networkmanager" ];
@@ -32,7 +43,7 @@
     borgbackup.jobs.hp650 = {
       repo = "/mnt/backup/hp650";
       paths = [
-        "$/home/${user}/documents"
+        "/home/${user}/documents"
         "/home/${user}/downloads"
         "/home/${user}/music"
         "/home/${user}/pictures"
