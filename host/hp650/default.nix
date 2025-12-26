@@ -1,16 +1,8 @@
-{
-  pkgs,
-  user,
-  host,
-  ...
-}:
+{ pkgs, host, user, ... }:
 
 {
   imports = [ ./hardware.nix ];
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
   hardware.graphics.enable = true;
   boot.loader = {
@@ -28,12 +20,7 @@
   };
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "input"
-      "audio"
-      "networkmanager"
-    ];
+    extraGroups = [ "wheel" "input" "audio" "networkmanager" ];
     shell = pkgs.zsh;
   };
   services = {
@@ -42,54 +29,68 @@
       enable = true;
       pulse.enable = true;
     };
+    borgbackup.jobs.hp650 = {
+      repo = "/mnt/backup/hp650";
+      paths = [
+        "$/home/${user}/documents"
+        "/home/${user}/downloads"
+        "/home/${user}/music"
+        "/home/${user}/pictures"
+        "/home/${user}/videos"
+        "/home/${user}/.ssh"
+        "/home/${user}/.gnupg"
+        "/home/${user}/.librewolf"
+      ];
+      encryption.mode = "none";
+    };
     openvpn.servers = {
       canada = {
-        config = "config /home/frofor/documents/vpn/canada.ovpn";
+        config = "config \"/home/${user}/documents/vpn/canada.ovpn";
         updateResolvConf = true;
         autoStart = false;
       };
       japan = {
-        config = "config /home/frofor/documents/vpn/japan.ovpn";
+        config = "config \"/home/${user}/documents/vpn/japan.ovpn";
         updateResolvConf = true;
         autoStart = false;
       };
       mexico = {
-        config = "config /home/frofor/documents/vpn/mexico.ovpn";
+        config = "config \"/home/${user}/documents/vpn/mexico.ovpn";
         updateResolvConf = true;
         autoStart = false;
       };
       netherlands = {
-        config = "config /home/frofor/documents/vpn/netherlands.ovpn";
+        config = "config \"/home/${user}/documents/vpn/netherlands.ovpn";
         updateResolvConf = true;
         autoStart = false;
       };
       norway = {
-        config = "config /home/frofor/documents/vpn/norway.ovpn";
+        config = "config \"/home/${user}/documents/vpn/norway.ovpn\"";
         updateResolvConf = true;
         autoStart = false;
       };
       poland = {
-        config = "config /home/frofor/documents/vpn/poland.ovpn";
+        config = "config \"/home/${user}/documents/vpn/poland.ovpn\"";
         updateResolvConf = true;
         autoStart = false;
       };
       romania = {
-        config = "config /home/frofor/documents/vpn/romania.ovpn";
+        config = "config \"/home/${user}/documents/vpn/romania.ovpn\"";
         updateResolvConf = true;
         autoStart = false;
       };
       singapore = {
-        config = "config /home/frofor/documents/vpn/singapore.ovpn";
+        config = "config \"/home/${user}/documents/vpn/singapore.ovpn\"";
         updateResolvConf = true;
         autoStart = false;
       };
       switzerland = {
-        config = "config /home/frofor/documents/vpn/switzerland.ovpn";
+        config = "config \"/home/${user}/documents/vpn/switzerland.ovpn\"";
         updateResolvConf = true;
         autoStart = false;
       };
       united-states = {
-        config = "config /home/frofor/documents/vpn/united-states.ovpn";
+        config = "config \"/home/${user}/documents/vpn/united-states.ovpn\"";
         updateResolvConf = true;
       };
     };

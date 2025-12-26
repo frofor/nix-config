@@ -5,26 +5,29 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs =
-    { nixpkgs, home-manager, ... }:
-    let
-      inherit (nixpkgs.lib) nixosSystem;
-      user = "frofor";
-      host = "nixos";
-    in
-    {
-      nixosConfigurations.${host} = nixosSystem {
+  outputs = { nixpkgs, home-manager, nixvim, ... }: {
+    nixosConfigurations.hp650 =
+      let
+        host = "hp650";
+        user = "frofor";
+      in
+      nixpkgs.lib.nixosSystem {
         modules = [
-          ({ pkgs, ... }: import ./host { inherit pkgs user host; })
+          ({ pkgs, ... }: import ./host/${host} { inherit pkgs host user; })
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              users.${user} = import ./home;
-              extraSpecialArgs = { inherit user host; };
+              users.${user} = import ./home/${host};
+              sharedModules = [ nixvim.homeModules.nixvim ];
+              extraSpecialArgs = { inherit host user; };
             };
           }
         ];
       };
-    };
+  };
 }

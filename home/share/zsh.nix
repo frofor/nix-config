@@ -31,6 +31,7 @@
     '';
     shellAliases = {
       g = "git";
+      v = "nvim";
       l = "ls -lhF --group-directories-first --color=auto";
       ls = "ls -hF --group-directories-first --color=auto";
     };

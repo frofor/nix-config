@@ -13,9 +13,9 @@ in
     config = {
       modifier = mod;
       assigns = {
-        "2" = [ { app_id = "librewolf"; } ];
-        "3" = [ { app_id = "org.keepassxc.KeePassXC"; } ];
-        "4" = [ { app_id = "gimp"; } ];
+        "2" = [{ app_id = "librewolf"; }];
+        "3" = [{ app_id = "org.keepassxc.KeePassXC"; }];
+        "4" = [{ app_id = "gimp"; }];
       };
       modes.resize = {
         ${left} = "resize shrink width 25 px";
@@ -27,7 +27,6 @@ in
       startup = [
         { command = "librewolf"; }
         { command = "keepassxc"; }
-        { command = "mpv \"$XDG_MUSIC_DIR\""; }
       ];
       keybindings = {
         "${mod}+return" = "exec foot";
@@ -84,9 +83,10 @@ in
         XF86AudioNext = "exec echo playlist-next | socat - \"${mpvSocket}\"";
         XF86MonBrightnessDown = "exec brightnessctl s 10%-";
         XF86MonBrightnessUp = "exec brightnessctl s +10%";
-        Print = "exec sh -c 'mkdir -p \"$XDG_PICTURES_DIR/screenshots\" && grim -g \"$(slurp)\" \"$XDG_PICTURES_DIR/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png\"'";
+        Print =
+          "exec sh -c 'mkdir -p \"$XDG_PICTURES_DIR/screenshots\" && grim -g \"$(slurp)\" \"$XDG_PICTURES_DIR/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png\"'";
       };
-      bars = [ { command = "waybar"; } ];
+      bars = [{ command = "waybar"; }];
       window = {
         titlebar = false;
         border = 1;

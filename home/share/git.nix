@@ -1,8 +1,4 @@
-{
-  user,
-  email,
-  gpgKey,
-}:
+{ user, email, gpgKey }:
 
 {
   programs.git = {
