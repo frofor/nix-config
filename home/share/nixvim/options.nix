@@ -22,7 +22,6 @@ in
         space = "·";
         tab = "> ";
       };
-      showtabline = 2;
       ignorecase = true;
       smartcase = true;
       swapfile = false;
