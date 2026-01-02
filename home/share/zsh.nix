@@ -30,7 +30,7 @@
       zstyle ':completion:*' substitute 1
     '';
     shellAliases = {
-      d = "doas";
+      d = "doas ";
       g = "git";
       v = "nvim";
       l = "ls -lhF --group-directories-first --color=auto";
