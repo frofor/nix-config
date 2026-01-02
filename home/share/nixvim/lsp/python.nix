@@ -1,3 +1,3 @@
 {
-  programs.nixvim.plugins.lsp.servers.pylyzer.enable = true;
+  programs.nixvim.plugins.lsp.servers.pylsp.enable = true;
 }
