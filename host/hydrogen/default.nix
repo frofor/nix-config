@@ -40,8 +40,8 @@
       enable = true;
       pulse.enable = true;
     };
-    borgbackup.jobs.hp650 = {
-      repo = "/mnt/backup/hp650";
+    borgbackup.jobs.${host} = {
+      repo = "/mnt/backup/${host}";
       paths = [
         "/home/${user}/documents"
         "/home/${user}/downloads"

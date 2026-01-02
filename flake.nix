@@ -11,9 +11,9 @@
     };
   };
   outputs = { nixpkgs, home-manager, nixvim, ... }: {
-    nixosConfigurations.hp650 =
+    nixosConfigurations.hydrogen =
       let
-        host = "hp650";
+        host = "hydrogen";
         user = "frofor";
       in
       nixpkgs.lib.nixosSystem {
