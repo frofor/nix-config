@@ -71,9 +71,8 @@ in
           low = 40;
           critical = 20;
         };
-        format = "{icon}  {capacity}%";
-        format-charging = "{icon}󱐋 {capacity}%";
-        format-discharging = "{icon}󰚥 {capacity}%";
+        format = "{icon}󱐋 {capacity}%";
+        format-discharging = "{icon}  {capacity}%";
         format-icons = {
           high = "󱊣";
           medium = "󱊢";
@@ -126,24 +125,24 @@ in
           color: inherit;
       }
 
-      #battery.high {
+      #battery {
           color: ${color.green};
       }
 
-      #battery.medium {
+      #battery.discharging {
+          color: ${color.white};
+      }
+
+      #battery.discharging.medium {
           color: ${color.yellow};
       }
 
-      #battery.low {
+      #battery.discharging.low {
           color: ${color.orange};
       }
 
-      #battery.critical {
+      #battery.discharging.critical {
           color: ${color.red};
-      }
-
-      #battery.charging {
-          color: ${color.blue};
       }
     '';
   };
