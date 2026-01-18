@@ -15,8 +15,6 @@ in
     (import ../share/foot.nix { inherit fontMono; })
     (import ../share/git.nix { inherit user email gpgKey; })
     ../share/gpg.nix
-    ../share/jjui.nix
-    (import ../share/jujutsu.nix { inherit user email gpgKey; })
     ../share/opencode.nix
     ../share/keepassxc.nix
     (import ../share/mpv.nix { inherit mpvSocket; })
