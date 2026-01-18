@@ -22,10 +22,7 @@
   };
   networking = {
     hostName = host;
-    networkmanager = {
-      enable = true;
-      plugins = with pkgs; [ networkmanager-openvpn ];
-    };
+    networkmanager.enable = true;
   };
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
