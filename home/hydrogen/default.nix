@@ -33,13 +33,10 @@ in
     username = user;
     homeDirectory = "/home/${user}";
     packages = with pkgs;
-      [ gimp gnupg htop librewolf nerd-fonts.iosevka nil opencode skim tor-browser xdg-utils ]
+      [ gimp htop librewolf nerd-fonts.iosevka nil opencode skim tor-browser xdg-utils ]
       ++ mpvPkgs
       ++ swayPkgs
       ++ nixvimPkgs;
-    sessionVariables = {
-      GNUPGHOME = "${config.xdg.dataHome}/gnupg";
-      CARGO_HOME = "${config.xdg.dataHome}/cargo";
-    };
+    sessionVariables.CARGO_HOME = "${config.xdg.dataHome}/cargo";
   };
 }
