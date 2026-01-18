@@ -35,7 +35,10 @@
     shell = pkgs.zsh;
   };
   services = {
-    getty.autologinUser = user;
+    getty = {
+      autologinUser = user;
+      autologinOnce = true;
+    };
     pipewire = {
       enable = true;
       pulse.enable = true;
