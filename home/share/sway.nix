@@ -12,11 +12,6 @@ in
     enable = true;
     config = {
       modifier = mod;
-      assigns = {
-        "2" = [{ app_id = "librewolf"; }];
-        "3" = [{ app_id = "org.keepassxc.KeePassXC"; }];
-        "4" = [{ app_id = "gimp"; }];
-      };
       modes.resize = {
         ${left} = "resize shrink width 25 px";
         ${down} = "resize grow height 25 px";
@@ -96,6 +91,21 @@ in
         style = "Regular";
         size = 10.0;
       };
+      output = {
+        HDMI-A-1.pos = "0 0";
+        eDP-1.pos = "1920 0";
+      };
+      assigns = {
+        "2" = [{ app_id = "librewolf"; }];
+        "3" = [{ app_id = "org.keepassxc.KeePassXC"; }];
+        "4" = [{ app_id = "gimp"; }];
+      };
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "HDMI-A-1"; }
+        { workspace = "2"; output = "HDMI-A-1"; }
+        { workspace = "3"; output = "eDP-1"; }
+        { workspace = "4"; output = "HDMI-A-1"; }
+      ];
     };
   };
 }
