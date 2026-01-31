@@ -31,7 +31,19 @@ in
     username = user;
     homeDirectory = "/home/${user}";
     packages = with pkgs;
-      [ gimp htop librewolf nerd-fonts.iosevka nil opencode skim tor-browser xdg-utils ]
+      [
+        android-tools
+        gimp
+        htop
+        libreoffice
+        librewolf
+        nerd-fonts.iosevka
+        nil
+        opencode
+        skim
+        tor-browser
+        xdg-utils
+      ]
       ++ mpvPkgs
       ++ swayPkgs
       ++ nixvimPkgs;

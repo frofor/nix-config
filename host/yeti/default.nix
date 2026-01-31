@@ -28,7 +28,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "audio" "networkmanager" ];
+    extraGroups = [ "wheel" "input" "audio" "networkmanager" "kvm" "adbusers" ];
     shell = pkgs.zsh;
   };
   services = {
