@@ -30,11 +30,13 @@
       zstyle ':completion:*' substitute 1
     '';
     shellAliases = {
+      c = "cargo";
       d = "doas ";
       g = "git";
-      v = "nvim";
       l = "ls -lhF --group-directories-first --color=auto";
       ls = "ls -hF --group-directories-first --color=auto";
+      t = "trash";
+      v = "nvim";
     };
   };
 }
