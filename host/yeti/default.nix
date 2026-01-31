@@ -40,6 +40,7 @@
       enable = true;
       pulse.enable = true;
     };
+    printing.enable = true;
     borgbackup.jobs.${host} = {
       repo = "/mnt/backup/${host}";
       paths = [
