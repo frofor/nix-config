@@ -42,6 +42,7 @@ in
         opencode
         skim
         tor-browser
+        trashy
         xdg-utils
       ]
       ++ mpvPkgs
