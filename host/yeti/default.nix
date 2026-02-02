@@ -31,6 +31,7 @@
     extraGroups = [ "wheel" "input" "audio" "networkmanager" "kvm" "adbusers" ];
     shell = pkgs.zsh;
   };
+  environment.binsh = "${pkgs.dash}/bin/dash";
   services = {
     getty = {
       autologinUser = user;
