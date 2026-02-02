@@ -24,11 +24,11 @@ in
         { command = "keepassxc"; }
       ];
       keybindings = {
-        "${mod}+return" = "exec foot";
+        "${mod}+return" = "exec footclient";
         "${mod}+b" = "exec librewolf";
         "${mod}+g" = "exec gimp";
-        "${mod}+n" = "exec foot -e nmtui-connect";
-        "${mod}+m" = "exec foot -e htop";
+        "${mod}+n" = "exec foot nmtui-connect";
+        "${mod}+m" = "exec foot htop";
         "${mod}+p" = "exec keepassxc";
         "${mod}+t" = "exec tor-browser";
         "${mod}+f" = "fullscreen";
