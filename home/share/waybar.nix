@@ -18,7 +18,7 @@ in
       spacing = 30;
       modules-left = [ "sway/workspaces" "sway/scratchpad" "sway/mode" "sway/window" ];
       modules-center = [ "clock" ];
-      modules-right = [ "keyboard-state" "backlight" "pulseaudio" "battery" ];
+      modules-right = [ "network" "backlight" "pulseaudio" "battery" ];
       "sway/workspaces" = {
         all-outputs = true;
         warp-on-scroll = false;
@@ -44,6 +44,14 @@ in
       "sway/window".tooltip = false;
       clock = {
         format = "󱑎 {:%R 󰃭 %d.%m}";
+        tooltip = false;
+      };
+      network = {
+        format-ethernet = " {ifname}";
+        format-wifi = "󰖩 {essid}";
+        format-linked = "󰌹 {ifname}";
+        format-disconnected = "󰖪";
+        format-disabled = "󰲛";
         tooltip = false;
       };
       backlight = {
@@ -123,6 +131,10 @@ in
       #mode {
           background-color: inherit;
           color: inherit;
+      }
+
+      #network.disconnected, #network.disabled {
+          color: ${color.red};
       }
 
       #battery {
