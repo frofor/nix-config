@@ -1,65 +1,26 @@
 { pkgs, host, user, ... }:
 
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    (import ./vpn.nix { inherit user; })
+    ../share/boot.nix
+    (import ../share/doas.nix { inherit user; })
+    (import ../share/getty.nix { inherit user; })
+    ../share/i2p.nix
+    (import ../share/network.nix { inherit host; })
+    ../share/pipewire.nix
+    ../share/printing.nix
+    (import ../share/zsh.nix { inherit pkgs user; })
+  ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
   hardware.graphics.enable = true;
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-  security = {
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [{
-        users = [ user ];
-        keepEnv = true;
-        persist = true;
-      }];
-    };
-  };
-  networking = {
-    hostName = host;
-    networkmanager.enable = true;
-  };
+  environment.binsh = "${pkgs.dash}/bin/dash";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   users.users.${user} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "input" "audio" "networkmanager" "kvm" "adbusers" ];
-    shell = pkgs.zsh;
   };
-  environment.binsh = "${pkgs.dash}/bin/dash";
-  services = {
-    getty = {
-      autologinUser = user;
-      autologinOnce = true;
-    };
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-    };
-    printing.enable = true;
-    borgbackup.jobs.${host} = {
-      repo = "/mnt/backup/${host}";
-      paths = [
-        "/home/${user}/documents"
-        "/home/${user}/downloads"
-        "/home/${user}/music"
-        "/home/${user}/pictures"
-        "/home/${user}/videos"
-        "/home/${user}/.ssh"
-        "/home/${user}/.gnupg"
-        "/home/${user}/.librewolf"
-      ];
-      encryption.mode = "none";
-    };
-    openvpn.servers.united-states = {
-      config = "config \"/home/${user}/documents/vpn/united-states.ovpn\"";
-      updateResolvConf = true;
-    };
-  };
-  programs.zsh.enable = true;
 }
