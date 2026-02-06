@@ -19,6 +19,9 @@
       defaultApplications = {
         "image/jpeg" = "librewolf.desktop";
         "image/png" = "librewolf.desktop";
+        "inode/directory" = "librewolf.desktop";
+        "x-scheme-handler/about" = "librewolf.desktop";
+        "x-scheme-handler/unknown" = "librewolf.desktop";
       };
     };
   };
