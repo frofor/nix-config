@@ -23,7 +23,7 @@ in
     (import ../share/sway.nix { inherit font mpvSocket; })
     (import ../share/waybar.nix { inherit font; })
     ../share/wlsunset.nix
-    (import ../share/xdg.nix { inherit user; })
+    (import ../share/xdg.nix { inherit pkgs user; })
     ../share/zsh.nix
   ];
   home = {
@@ -33,8 +33,10 @@ in
     packages = with pkgs;
       [
         android-tools
+        dex
         gimp
         htop
+        libnotify
         libreoffice
         librewolf
         nerd-fonts.iosevka

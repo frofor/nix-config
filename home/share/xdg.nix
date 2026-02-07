@@ -1,4 +1,4 @@
-{ user }:
+{ pkgs, user }:
 
 {
   xdg = {
@@ -13,6 +13,20 @@
       publicShare = "/home/${user}/public";
       templates = "/home/${user}/templates";
       videos = "/home/${user}/videos";
+    };
+    desktopEntries = {
+      librewolf-i2p = {
+        name = "LibreWolf I2P";
+        exec = "${pkgs.librewolf}/bin/librewolf -p i2p";
+      };
+      htop = {
+        name = "htop";
+        exec = "${pkgs.htop}/bin/foot ${pkgs.htop}/bin/htop";
+      };
+      network-manager = {
+        name = "network-manager";
+        exec = "${pkgs.foot}/bin/foot ${pkgs.networkmanager}/bin/nmtui-connect";
+      };
     };
     mimeApps = {
       enable = true;
