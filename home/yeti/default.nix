@@ -49,6 +49,9 @@ in
       ]
       ++ swayPkgs
       ++ nixvimPkgs;
-    sessionVariables.CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    sessionVariables = {
+      EDITOR = "nvim";
+      CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    };
   };
 }
