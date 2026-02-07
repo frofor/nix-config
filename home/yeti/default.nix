@@ -42,6 +42,7 @@ in
         nerd-fonts.iosevka
         nil
         opencode
+        rtorrent
         skim
         tor-browser
         trash-cli

@@ -11,6 +11,7 @@
     (import ../share/network.nix { inherit host; })
     ../share/pipewire.nix
     ../share/printing.nix
+    ../share/rtorrent.nix
     (import ../share/zsh.nix { inherit pkgs user; })
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
