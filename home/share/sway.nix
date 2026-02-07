@@ -1,11 +1,12 @@
-{ font, mpvSocket }:
+{ pkgs, scriptsDir, font, mpvSocket }:
 
 let
   mod = "Mod4";
-  left = "h";
-  right = "l";
-  up = "k";
-  down = "j";
+  brightnessctlBin = "'${pkgs.brightnessctl}/bin/brightnessctl'";
+  footBin = "'${pkgs.foot}/bin/foot'";
+  footclientBin = "'${pkgs.foot}/bin/footclient'";
+  socatBin = "'${pkgs.socat}/bin/socat'";
+  wpctlBin = "'${pkgs.wireplumber}/bin/wpctl'";
 in
 {
   wayland.windowManager.sway = {
@@ -13,10 +14,14 @@ in
     config = {
       modifier = mod;
       modes.resize = {
-        ${left} = "resize shrink width 25 px";
-        ${down} = "resize grow height 25 px";
-        ${up} = "resize shrink height 25 px";
-        ${right} = "resize grow width 25 px";
+        h = "resize shrink width 25 px";
+        left = "resize shrink width 25 px";
+        j = "resize grow height 25 px";
+        down = "resize grow height 25 px";
+        k = "resize shrink height 25 px";
+        up = "resize shrink height 25 px";
+        l = "resize grow width 25 px";
+        right = "resize grow width 25 px";
         escape = "mode default";
       };
       startup = [
@@ -24,24 +29,29 @@ in
         { command = "keepassxc"; }
       ];
       keybindings = {
-        "${mod}+return" = "exec footclient";
-        "${mod}+b" = "exec librewolf";
-        "${mod}+g" = "exec gimp";
-        "${mod}+n" = "exec foot nmtui-connect";
-        "${mod}+m" = "exec foot htop";
-        "${mod}+p" = "exec keepassxc";
-        "${mod}+t" = "exec tor-browser";
+        "${mod}+return" = "exec ${footclientBin}";
         "${mod}+f" = "fullscreen";
+        "${mod}+alt+j" = "exec ${footBin} -F \"${scriptsDir}/sk-journal.sh\"";
+        "${mod}+alt+l" = "exec ${footBin} -F \"${scriptsDir}/sk-launch.sh\"";
+        "${mod}+alt+s" = "exec ${footBin} -F \"${scriptsDir}/sk-service.sh\"";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
-        "${mod}+${left}" = "focus left";
-        "${mod}+${down}" = "focus down";
-        "${mod}+${up}" = "focus up";
-        "${mod}+${right}" = "focus right";
-        "${mod}+shift+${left}" = "move left";
-        "${mod}+shift+${down}" = "move down";
-        "${mod}+shift+${up}" = "move up";
-        "${mod}+shift+${right}" = "move right";
+        "${mod}+h" = "focus left";
+        "${mod}+left" = "focus left";
+        "${mod}+j" = "focus down";
+        "${mod}+down" = "focus down";
+        "${mod}+k" = "focus up";
+        "${mod}+up" = "focus up";
+        "${mod}+l" = "focus right";
+        "${mod}+right" = "focus right";
+        "${mod}+shift+h" = "move left";
+        "${mod}+shift+left" = "move left";
+        "${mod}+shift+j" = "move down";
+        "${mod}+shift+down" = "move down";
+        "${mod}+shift+k" = "move up";
+        "${mod}+shift+up" = "move up";
+        "${mod}+shift+l" = "move right";
+        "${mod}+shift+right" = "move right";
         "${mod}+1" = "workspace number 1";
         "${mod}+2" = "workspace number 2";
         "${mod}+3" = "workspace number 3";
@@ -68,18 +78,17 @@ in
         "${mod}+w" = "layout tabbed";
         "${mod}+space" = "focus mode_toggle";
         "${mod}+shift+space" = "floating toggle";
-        XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
-        XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
-        XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-        XF86AudioPlay = "exec echo cycle pause | socat - \"${mpvSocket}\"";
-        XF86AudioPause = "exec echo cycle pause | socat - \"${mpvSocket}\"";
-        XF86AudioStop = "exec echo cycle pause | socat - \"${mpvSocket}\"";
-        XF86AudioPrev = "exec echo playlist-prev | socat - \"${mpvSocket}\"";
-        XF86AudioNext = "exec echo playlist-next | socat - \"${mpvSocket}\"";
-        XF86MonBrightnessDown = "exec brightnessctl s 10%-";
-        XF86MonBrightnessUp = "exec brightnessctl s +10%";
-        Print =
-          "exec sh -c 'mkdir -p \"$XDG_PICTURES_DIR/screenshots\" && grim -g \"$(slurp)\" \"$XDG_PICTURES_DIR/screenshots/$(date +%Y-%m-%d-%H-%M-%S).png\"'";
+        XF86AudioLowerVolume = "exec ${wpctlBin} set-volume @DEFAULT_SINK@ 10%-";
+        XF86AudioRaiseVolume = "exec ${wpctlBin} set-volume @DEFAULT_SINK@ 10%+";
+        XF86AudioMute = "exec ${wpctlBin} set-mute @DEFAULT_SINK@ toggle";
+        XF86AudioPlay = "exec echo cycle pause | ${socatBin} - \"${mpvSocket}\"";
+        XF86AudioPause = "exec echo cycle pause | ${socatBin} - \"${mpvSocket}\"";
+        XF86AudioStop = "exec echo cycle pause | ${socatBin} - \"${mpvSocket}\"";
+        XF86AudioPrev = "exec echo playlist-prev | ${socatBin} - \"${mpvSocket}\"";
+        XF86AudioNext = "exec echo playlist-next | ${socatBin} - \"${mpvSocket}\"";
+        XF86MonBrightnessDown = "exec ${brightnessctlBin} s 10%-";
+        XF86MonBrightnessUp = "exec ${brightnessctlBin} s +10%";
+        Print = "exec \"${scriptsDir}/screenshot.sh\"";
       };
       bars = [{ command = "waybar"; }];
       window = {

@@ -1,13 +1,13 @@
 { config, pkgs, host, user, ... }:
 
 let
+  scriptsDir = "/home/${user}/documents/scripts";
   email = "18nraywczifc@protonmail.com";
   gpgKey = "35F577EAAE047585";
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
-  mpvSocket = "/tmp/mpv.sock";
-  mpvPkgs = with pkgs; [ socat mpv ];
-  swayPkgs = with pkgs; [ brightnessctl grim mako slurp sway wlsunset ];
+  mpvSocket = "$XDG_RUNTIME_DIR/mpv.sock";
+  swayPkgs = with pkgs; [ sway wlsunset ];
   nixvimPkgs = with pkgs; [ fd ripgrep ];
 in
 {
@@ -15,12 +15,13 @@ in
     (import ../share/foot.nix { inherit fontMono; })
     (import ../share/git.nix { inherit user email gpgKey; })
     ../share/gpg.nix
-    ../share/opencode.nix
     ../share/keepassxc.nix
     (import ../share/mpv.nix { inherit mpvSocket; })
     (import ../share/nixvim { inherit host; })
+    ../share/opencode.nix
+    (import ../share/scripts.nix { inherit pkgs scriptsDir; })
     ../share/skim.nix
-    (import ../share/sway.nix { inherit font mpvSocket; })
+    (import ../share/sway.nix { inherit pkgs scriptsDir font mpvSocket; })
     (import ../share/waybar.nix { inherit font; })
     ../share/wlsunset.nix
     (import ../share/xdg.nix { inherit pkgs user; })
@@ -33,22 +34,19 @@ in
     packages = with pkgs;
       [
         android-tools
-        dex
         gimp
-        htop
         libnotify
         libreoffice
         librewolf
+        mpv
         nerd-fonts.iosevka
         nil
         opencode
         rtorrent
-        skim
         tor-browser
         trash-cli
         xdg-utils
       ]
-      ++ mpvPkgs
       ++ swayPkgs
       ++ nixvimPkgs;
     sessionVariables.CARGO_HOME = "${config.xdg.dataHome}/cargo";
