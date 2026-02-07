@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, user }:
 
 {
   users.users.${user}.shell = pkgs.zsh;
