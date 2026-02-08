@@ -7,7 +7,6 @@
     ../share/boot.nix
     (import ../share/doas.nix { inherit user; })
     (import ../share/getty.nix { inherit user; })
-    ../share/i2p.nix
     (import ../share/network.nix { inherit host; })
     ../share/pipewire.nix
     ../share/printing.nix
