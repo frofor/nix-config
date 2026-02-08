@@ -21,7 +21,7 @@
       };
       htop = {
         name = "htop";
-        exec = "${pkgs.htop}/bin/foot ${pkgs.htop}/bin/htop";
+        exec = "${pkgs.foot}/bin/foot ${pkgs.htop}/bin/htop";
       };
       network-manager = {
         name = "network-manager";
