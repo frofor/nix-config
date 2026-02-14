@@ -44,6 +44,7 @@ in
       nil
       (pass.withExtensions (xs: with xs; [ pass-otp ]))
       rtorrent
+      (texliveBasic.withPackages (ps: with ps; [ xetex ]))
       tor-browser
       trash-cli
       wl-clipboard
