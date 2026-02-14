@@ -1,6 +1,10 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,31 +14,33 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, nixvim, ... }:
+  outputs = inputs@{ nixpkgs, nur, home-manager, nixvim, ... }:
     let
-      hosts.yeti = { user = "frofor"; };
+      mkHomeModule = { user, host }: {
+        home-manager = {
+          useGlobalPkgs = true;
+          users.${user}.imports = [ ./home/${host} ];
+          sharedModules = [ nixvim.homeModules.nixvim ];
+          extraSpecialArgs = { inherit inputs host user; };
+        };
+      };
+      mkSystem = { host, user, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ nur.overlays.default ];
+        };
+        modules = [
+          ./host/${host}
+          home-manager.nixosModules.home-manager
+          (mkHomeModule { inherit user host; })
+        ];
+        specialArgs = { inherit inputs host user; };
+      };
     in
     {
-      nixosConfigurations = builtins.mapAttrs
-        (host: cfg: nixpkgs.lib.nixosSystem {
-          modules = [
-            ({ pkgs, ... }: import ./host/${host} {
-              inherit pkgs host;
-              inherit (cfg) user;
-            })
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                users.${cfg.user} = import ./home/${host};
-                sharedModules = [ nixvim.homeModules.nixvim ];
-                extraSpecialArgs = {
-                  inherit host;
-                  inherit (cfg) user;
-                };
-              };
-            }
-          ];
-        })
-        hosts;
+      nixosConfigurations.yeti = mkSystem {
+        host = "yeti";
+        user = "frofor";
+      };
     };
 }

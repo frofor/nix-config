@@ -17,7 +17,10 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
   hardware.graphics.enable = true;
-  environment.binsh = "${pkgs.dash}/bin/dash";
+  environment = {
+    binsh = "${pkgs.dash}/bin/dash";
+    localBinInPath = true;
+  };
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   users.users.${user} = {

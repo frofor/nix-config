@@ -16,6 +16,7 @@ in
     (import ../share/git.nix { inherit user email gpgKey; })
     ../share/gpg.nix
     ../share/keepassxc.nix
+    ../share/librewolf
     (import ../share/mpv.nix { inherit mpvSocket; })
     (import ../share/nixvim { inherit host; })
     ../share/opencode.nix
@@ -31,24 +32,24 @@ in
     stateVersion = "25.11";
     username = user;
     homeDirectory = "/home/${user}";
-    packages = with pkgs;
-      [
-        android-tools
-        gimp
-        libnotify
-        libreoffice
-        librewolf
-        mpv
-        nerd-fonts.iosevka
-        nil
-        opencode
-        rtorrent
-        tor-browser
-        trash-cli
-        xdg-utils
-      ]
-      ++ swayPkgs
-      ++ nixvimPkgs;
+    packages = with pkgs; [
+      android-tools
+      gimp
+      ipe
+      libnotify
+      libreoffice
+      mpv
+      nerd-fonts.iosevka
+      nil
+      opencode
+      rtorrent
+      tor-browser
+      trash-cli
+      wl-clipboard
+      xdg-utils
+    ]
+    ++ swayPkgs
+    ++ nixvimPkgs;
     sessionVariables = {
       EDITOR = "nvim";
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
