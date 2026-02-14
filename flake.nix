@@ -19,6 +19,7 @@
       mkHomeModule = { user, host }: {
         home-manager = {
           useGlobalPkgs = true;
+          useUserPackages = true;
           users.${user}.imports = [ ./home/${host} ];
           sharedModules = [ nixvim.homeModules.nixvim ];
           extraSpecialArgs = { inherit inputs host user; };

@@ -1,19 +1,28 @@
-{ pkgs, scriptsDir }:
+{ config, pkgs, user, ... }:
 
 let
-  screenshotsDir = "$XDG_PICTURES_DIR/screenshots";
+  scriptsDir = "${config.home.homeDirectory}/documents/scripts";
+  screenshotsDir = "${config.home.homeDirectory}/pictures/screenshots";
   dexBin = "'${pkgs.dex}/bin/dex'";
-  fdBin = "'${pkgs.fd}/bin/fd'";
   grimBin = "'${pkgs.grim}/bin/grim'";
   slurpBin = "'${pkgs.slurp}/bin/slurp'";
-  skBin = "'${pkgs.skim}/bin/sk'";
 in
 {
   home.file = {
+    "${config.home.homeDirectory}/.local/bin/sk-attr" = {
+      text = ''
+        #!/bin/sh
+        attrs=$(sed 1d)
+        key=$(printf "$attrs" | awk -F : '{print $1}' | sk)
+        wl-copy $(printf "$attrs" | grep "^$key:" | sed 's/^[^:]*: *//')
+        echo "Copied \033[33m$key\033[0m to clipboard."
+      '';
+      executable = true;
+    };
     "${scriptsDir}/screenshot.sh" = {
       text = ''
         #!/bin/sh
-        mkdir -p "${screenshotsDir}"
+        mkdir -p '${screenshotsDir}'
         ${grimBin} -g "$(${slurpBin})" "${screenshotsDir}/$(date +%Y-%m-%d-%H-%M-%S).png"
       '';
       executable = true;
@@ -21,34 +30,36 @@ in
     "${scriptsDir}/sk-journal.sh" = {
       text = ''
         #!/bin/sh
-        services=$(systemctl list-units -t service --plain --no-legend | awk '{print $1}')
-        service=$(printf "$services\n" | ${skBin} -p 'Choose a service: ')
-        journalctl -feu "$service"
+        svs=$(systemctl list-units -t service --plain --no-legend | awk '{print $1}')
+        sv=$(printf "%s\n" "$svs" | sk -p 'Choose a service: ')
+        journalctl -feu "$sv"
       '';
       executable = true;
     };
     "${scriptsDir}/sk-launch.sh" = {
       text = ''
         #!/bin/sh
-        apps=$(${fdBin} -e desktop . ~/.nix-profile/share/applications)
-        app=$(printf "$apps\n" | ${skBin} -p 'Choose an application: ')
-        setsid ${dexBin} "$app"
+        apps=$(fd -e desktop . '/etc/profiles/per-user/${user}/share/applications')
+        app=$(printf "%s\n" "$apps" | sk -p 'Choose an application: ')
+        swaymsg exec "${dexBin} '$app'"
       '';
       executable = true;
     };
     "${scriptsDir}/sk-service.sh" = {
       text = ''
         #!/bin/sh
-        action=$(printf 'status\nstart\nstop\nrestart\n' | ${skBin} -p 'Choose an action: ')
+        action=$(printf 'status\nstart\nstop\nrestart\n' | sk -p 'Choose an action: ')
         case "$action" in
             status) flags=--all ;;
             start|restart) flags='--state loaded,inactive,failed' ;;
-            stop) flags='''''' ;;
         esac
 
-        services=$(systemctl list-units -t service $flags --plain --no-legend | awk '{print $1}')
-        service=$(printf "$services\n" | ${skBin} -p 'Choose a service: ')
-        systemctl "$action" "$service" | less
+        sys=$(systemctl list-units -t service $flags --plain --no-legend | awk '{print $1}')
+        usr=$(systemctl list-units -t service $flags --user --plain --no-legend | awk '{print $1}')
+        sv=$(printf "%s\n%s\n" "$sys" "$usr" | sk -p 'Choose a service: ')
+
+        echo "$usr" | grep -q "^$sv$" && flags=--user || flags='''
+        systemctl "$action" $flags "$sv" | less
       '';
       executable = true;
     };

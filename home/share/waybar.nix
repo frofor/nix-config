@@ -1,4 +1,4 @@
-{ font }:
+{ font, ... }:
 
 let
   color = {

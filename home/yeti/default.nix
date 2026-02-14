@@ -1,7 +1,6 @@
 { config, pkgs, host, user, ... }:
 
 let
-  scriptsDir = "/home/${user}/documents/scripts";
   email = "18nraywczifc@protonmail.com";
   gpgKey = "35F577EAAE047585";
   font = "Iosevka NFP";
@@ -21,10 +20,10 @@ in
     ../share/opencode.nix
     ../share/ripgrep.nix
     ../share/rtorrent.nix
-    (import ../share/scripts.nix { inherit pkgs scriptsDir; })
+    (import ../share/scripts.nix { inherit config pkgs user; })
     ../share/session-variables.nix
     ../share/skim.nix
-    (import ../share/sway.nix { inherit pkgs scriptsDir font mpvSocket; })
+    (import ../share/sway.nix { inherit config pkgs font mpvSocket; })
     (import ../share/waybar.nix { inherit font; })
     ../share/wlsunset.nix
     (import ../share/xdg.nix { inherit pkgs user; })

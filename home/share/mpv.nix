@@ -1,4 +1,4 @@
-{ mpvSocket }:
+{ mpvSocket, ... }:
 
 {
   programs.mpv = {

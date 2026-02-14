@@ -1,12 +1,10 @@
-{ pkgs, scriptsDir, font, mpvSocket }:
+{ config, pkgs, font, mpvSocket, ... }:
 
 let
   mod = "Mod4";
+  scriptsDir = "${config.home.homeDirectory}/documents/scripts";
   brightnessctlBin = "'${pkgs.brightnessctl}/bin/brightnessctl'";
-  footBin = "'${pkgs.foot}/bin/foot'";
-  footclientBin = "'${pkgs.foot}/bin/footclient'";
   socatBin = "'${pkgs.socat}/bin/socat'";
-  wpctlBin = "'${pkgs.wireplumber}/bin/wpctl'";
 in
 {
   wayland.windowManager.sway = {
@@ -25,15 +23,16 @@ in
         escape = "mode default";
       };
       startup = [
+        { command = "foot -s"; }
         { command = "librewolf"; }
         { command = "keepassxc"; }
       ];
       keybindings = {
-        "${mod}+return" = "exec ${footclientBin}";
+        "${mod}+return" = "exec footclient";
         "${mod}+f" = "fullscreen";
-        "${mod}+alt+j" = "exec ${footBin} -F \"${scriptsDir}/sk-journal.sh\"";
-        "${mod}+alt+l" = "exec ${footBin} -F \"${scriptsDir}/sk-launch.sh\"";
-        "${mod}+alt+s" = "exec ${footBin} -F \"${scriptsDir}/sk-service.sh\"";
+        "${mod}+alt+j" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
+        "${mod}+alt+l" = "exec footclient -F \"${scriptsDir}/sk-launch.sh\"";
+        "${mod}+alt+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
         "${mod}+h" = "focus left";
@@ -78,14 +77,14 @@ in
         "${mod}+w" = "layout tabbed";
         "${mod}+space" = "focus mode_toggle";
         "${mod}+shift+space" = "floating toggle";
-        XF86AudioLowerVolume = "exec ${wpctlBin} set-volume @DEFAULT_SINK@ 10%-";
-        XF86AudioRaiseVolume = "exec ${wpctlBin} set-volume @DEFAULT_SINK@ 10%+";
-        XF86AudioMute = "exec ${wpctlBin} set-mute @DEFAULT_SINK@ toggle";
-        XF86AudioPlay = "exec echo cycle pause | ${socatBin} - \"${mpvSocket}\"";
-        XF86AudioPause = "exec echo cycle pause | ${socatBin} - \"${mpvSocket}\"";
-        XF86AudioStop = "exec echo cycle pause | ${socatBin} - \"${mpvSocket}\"";
-        XF86AudioPrev = "exec echo playlist-prev | ${socatBin} - \"${mpvSocket}\"";
-        XF86AudioNext = "exec echo playlist-next | ${socatBin} - \"${mpvSocket}\"";
+        XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
+        XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
+        XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+        XF86AudioPlay = "exec echo cycle pause | ${socatBin} - '${mpvSocket}'";
+        XF86AudioPause = "exec echo cycle pause | ${socatBin} - '${mpvSocket}'";
+        XF86AudioStop = "exec echo cycle pause | ${socatBin} - '${mpvSocket}'";
+        XF86AudioPrev = "exec echo playlist-prev | ${socatBin} - '${mpvSocket}'";
+        XF86AudioNext = "exec echo playlist-next | ${socatBin} - '${mpvSocket}'";
         XF86MonBrightnessDown = "exec ${brightnessctlBin} s 10%-";
         XF86MonBrightnessUp = "exec ${brightnessctlBin} s +10%";
         Print = "exec \"${scriptsDir}/screenshot.sh\"";
