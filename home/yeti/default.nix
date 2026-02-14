@@ -42,7 +42,6 @@ in
       mpv
       nerd-fonts.iosevka
       nil
-      opencode
       rtorrent
       tor-browser
       trash-cli
