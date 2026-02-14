@@ -41,7 +41,6 @@ in
       libnotify
       libreoffice
       monero-cli
-      mpv
       nerd-fonts.iosevka
       nil
       (pass.withExtensions (xs: with xs; [ pass-otp ]))
