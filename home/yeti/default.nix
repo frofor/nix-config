@@ -21,6 +21,7 @@ in
     ../share/opencode.nix
     ../share/rtorrent.nix
     (import ../share/scripts.nix { inherit pkgs scriptsDir; })
+    ../share/session-variables.nix
     ../share/skim.nix
     (import ../share/sway.nix { inherit pkgs scriptsDir font mpvSocket; })
     (import ../share/waybar.nix { inherit font; })
@@ -48,9 +49,5 @@ in
       wl-clipboard
       xdg-utils
     ];
-    sessionVariables = {
-      EDITOR = "nvim";
-      CARGO_HOME = "${config.xdg.dataHome}/cargo";
-    };
   };
 }
