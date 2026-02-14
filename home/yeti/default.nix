@@ -8,10 +8,11 @@ let
   fontMono = "Iosevka NF";
   mpvSocket = "/run/user/1000/mpv.sock";
   swayPkgs = with pkgs; [ sway wlsunset ];
-  nixvimPkgs = with pkgs; [ fd ripgrep ];
+  nixvimPkgs = with pkgs; [ ripgrep ];
 in
 {
   imports = [
+    ../share/fd.nix
     (import ../share/foot.nix { inherit fontMono; })
     (import ../share/git.nix { inherit user email gpgKey; })
     ../share/gpg.nix
