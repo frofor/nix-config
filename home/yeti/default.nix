@@ -21,6 +21,7 @@ in
     (import ../share/mpv.nix { inherit mpvSocket; })
     (import ../share/nixvim { inherit host; })
     ../share/opencode.nix
+    ../share/rtorrent.nix
     (import ../share/scripts.nix { inherit pkgs scriptsDir; })
     ../share/skim.nix
     (import ../share/sway.nix { inherit pkgs scriptsDir font mpvSocket; })
@@ -44,7 +45,6 @@ in
       nerd-fonts.iosevka
       nil
       (pass.withExtensions (xs: with xs; [ pass-otp ]))
-      rtorrent
       (texliveBasic.withPackages (ps: with ps; [ xetex ]))
       tor-browser
       trash-cli

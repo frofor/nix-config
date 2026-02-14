@@ -1,0 +1,3 @@
+{
+  programs.rtorrent.enable = true;
+}
