@@ -7,8 +7,6 @@ let
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
   mpvSocket = "/run/user/1000/mpv.sock";
-  swayPkgs = with pkgs; [ sway wlsunset ];
-  nixvimPkgs = with pkgs; [ ripgrep ];
 in
 {
   imports = [
@@ -49,9 +47,7 @@ in
       trash-cli
       wl-clipboard
       xdg-utils
-    ]
-    ++ swayPkgs
-    ++ nixvimPkgs;
+    ];
     sessionVariables = {
       EDITOR = "nvim";
       CARGO_HOME = "${config.xdg.dataHome}/cargo";
