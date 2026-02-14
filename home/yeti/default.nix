@@ -19,6 +19,7 @@ in
     (import ../share/mpv.nix { inherit mpvSocket; })
     (import ../share/nixvim { inherit host; })
     ../share/opencode.nix
+    ../share/ripgrep.nix
     ../share/rtorrent.nix
     (import ../share/scripts.nix { inherit pkgs scriptsDir; })
     ../share/session-variables.nix
