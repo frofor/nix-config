@@ -1,4 +1,4 @@
-{ pkgs, user }:
+{ pkgs, user, ... }:
 
 {
   xdg = {
@@ -15,17 +15,21 @@
       videos = "/home/${user}/videos";
     };
     desktopEntries = {
-      librewolf-i2p = {
-        name = "LibreWolf I2P";
-        exec = "${pkgs.librewolf}/bin/librewolf -p i2p";
-      };
       htop = {
         name = "htop";
         exec = "${pkgs.foot}/bin/foot ${pkgs.htop}/bin/htop";
       };
+      librewolf-i2p = {
+        name = "LibreWolf I2P";
+        exec = "${pkgs.librewolf}/bin/librewolf -p i2p";
+      };
       network-manager = {
-        name = "network-manager";
+        name = "NetworkManager";
         exec = "${pkgs.foot}/bin/foot ${pkgs.networkmanager}/bin/nmtui-connect";
+      };
+      opencode = {
+        name = "Opencode";
+        exec = "${pkgs.foot}/bin/foot ${pkgs.opencode}/bin/opencode";
       };
     };
     mimeApps = {
