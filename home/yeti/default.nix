@@ -6,7 +6,7 @@ let
   gpgKey = "35F577EAAE047585";
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
-  mpvSocket = "$XDG_RUNTIME_DIR/mpv.sock";
+  mpvSocket = "/run/user/1000/mpv.sock";
   swayPkgs = with pkgs; [ sway wlsunset ];
   nixvimPkgs = with pkgs; [ fd ripgrep ];
 in
