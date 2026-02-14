@@ -38,6 +38,7 @@ in
       ipe
       libnotify
       libreoffice
+      monero-cli
       mpv
       nerd-fonts.iosevka
       nil
