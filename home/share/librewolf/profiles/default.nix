@@ -20,7 +20,7 @@
         };
         nixOsOptions = {
           name = "NixOS Options";
-          urls = [{ template = "https://mynixos.com/search?q={searchTerms}"; }];
+          urls = [{ template = "https://mynixos.com/search?q=%2foption%2f+{searchTerms}"; }];
           definedAliases = [ "@no" ];
         };
         bing.metaData.hidden = true;
