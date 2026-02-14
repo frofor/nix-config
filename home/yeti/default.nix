@@ -42,6 +42,7 @@ in
       mpv
       nerd-fonts.iosevka
       nil
+      (pass.withExtensions (xs: with xs; [ pass-otp ]))
       rtorrent
       tor-browser
       trash-cli
