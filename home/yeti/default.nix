@@ -25,6 +25,7 @@ in
     ../share/scripts
     ../share/session-variables.nix
     ../share/skim.nix
+    ../share/translate-shell.nix
     (import ../share/sway.nix { inherit config pkgs font mpvSocket; })
     (import ../share/waybar.nix { inherit font; })
     ../share/wlsunset.nix
