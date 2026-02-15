@@ -1,15 +1,13 @@
-{ config, pkgs, user, ... }:
-
-let
-  scriptsDir = "${config.home.homeDirectory}/documents/scripts";
-in
 {
   imports = [
     ./afk.nix
+    ./def.nix
+    ./pkg.nix
     ./sk-attr.nix
-    (import ./sk-journal.nix { inherit scriptsDir; })
-    (import ./sk-launch.nix { inherit pkgs user scriptsDir; })
-    (import ./sk-service.nix { inherit scriptsDir; })
-    (import ./snip.nix { inherit config pkgs scriptsDir; })
+    ./sk-journal.nix
+    ./sk-launch.nix
+    ./sk-service.nix
+    ./snip.nix
+    ./vwhich.nix
   ];
 }

@@ -22,7 +22,10 @@
           useUserPackages = true;
           users.${user}.imports = [ ./home/${host} ];
           sharedModules = [ nixvim.homeModules.nixvim ];
-          extraSpecialArgs = { inherit inputs host user; };
+          extraSpecialArgs = {
+            inherit inputs host user;
+            myLib = import ./lib;
+          };
         };
       };
       mkSystem = { host, user, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {

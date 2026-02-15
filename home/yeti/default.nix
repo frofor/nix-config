@@ -40,7 +40,6 @@ in
       android-tools
       gimp
       ipe
-      libnotify
       libreoffice
       monero-cli
       nerd-fonts.iosevka

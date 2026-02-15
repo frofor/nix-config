@@ -1,24 +1,16 @@
-{ config, pkgs, scriptsDir, ... }:
+{ config, pkgs, myLib, ... }:
 
 let
   screenshotsDir = "${config.home.homeDirectory}/pictures/screenshots";
-  grimBin = "'${pkgs.grim}/bin/grim'";
-  slurpBin = "'${pkgs.slurp}/bin/slurp'";
 in
-{
-  home.file."${scriptsDir}/snip.sh" = {
-    text = ''
-      #!/bin/sh
-      sel="$(${slurpBin})"
-      [ $? -ne 0 ] && exit 1
+myLib.mkScript "snip.sh" ''
+  sel="$('${pkgs.slurp}/bin/slurp')"
+  [ $? -ne 0 ] && exit 1
 
-      mkdir -p '${screenshotsDir}'
-      dst="${screenshotsDir}/$(date +%Y-%m-%d-%H-%M-%S).png"
-      ${grimBin} -g "$sel" "$dst"
+  mkdir -p '${screenshotsDir}'
+  dst="${screenshotsDir}/$(date +%Y-%m-%d-%H-%M-%S).png"
+  '${pkgs.grim}/bin/grim' -g "$sel" "$dst"
 
-      echo "Screenshot saved to \033[33m'$dst'\033[0m"
-      notify-send "Screenshot saved to '$dst'"
-    '';
-    executable = true;
-  };
-}
+  echo "Screenshot saved to \033[33m'$dst'\033[0m"
+  notify-send "Screenshot saved to '$dst'"
+''
