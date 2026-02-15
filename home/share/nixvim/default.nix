@@ -1,5 +1,3 @@
-{ host }:
-
 {
   imports = [
     ./autocmds.nix
@@ -7,7 +5,7 @@
     ./dap.nix
     ./gitsigns.nix
     ./keymaps.nix
-    (import ./lsp { inherit host; })
+    ./lsp
     ./options.nix
     ./snacks.nix
     ./supermaven.nix

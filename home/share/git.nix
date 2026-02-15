@@ -1,4 +1,4 @@
-{ user, email, gpgKey, ... }:
+{ nick, email, gpgKey, ... }:
 
 {
   programs.git = {
@@ -6,7 +6,7 @@
     settings = {
       user = {
         inherit email;
-        name = user;
+        name = nick;
         signingkey = gpgKey;
       };
       commit.gpgSign = true;

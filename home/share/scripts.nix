@@ -16,7 +16,7 @@ in
         attr=$(printf '%s' "$attrs" | awk -F : '{print $1}' | sk -p 'Choose an attribute: ')
         [ -z "$attr" ] && exit 1
 
-        wl-copy $(printf '%s' "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')
+        wl-copy $(printf %s "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')
         echo "Copied \033[33m$attr\033[0m to clipboard"
         notify-send "Copied $attr to clipboard"
       '';
@@ -26,7 +26,7 @@ in
       text = ''
         #!/bin/sh
         sel="$(${slurpBin})"
-        [ "$?" -ne 0 ] && exit 1
+        [ $? -ne 0 ] && exit 1
 
         mkdir -p '${screenshotsDir}'
         dst="${screenshotsDir}/$(date +%Y-%m-%d-%H-%M-%S).png"
@@ -41,7 +41,7 @@ in
       text = ''
         #!/bin/sh
         svs=$(systemctl list-units -t service --plain --no-legend | awk '{print $1}')
-        sv=$(printf '%s' "$svs" | sk -p 'Choose a service: ')
+        sv=$(printf %s "$svs" | sk -p 'Choose a service: ')
         [ -z "$sv" ] && exit 1
         journalctl -feu "$sv"
       '';
@@ -51,7 +51,7 @@ in
       text = ''
         #!/bin/sh
         apps=$(fd -e desktop . '/etc/profiles/per-user/${user}/share/applications')
-        app=$(printf '%s' "$apps" | sk -p 'Choose an application: ')
+        app=$(printf %s "$apps" | sk -p 'Choose an application: ')
         [ -z "$app" ] && exit 1
 
         echo "Launching \033[33m$app\033[0m..."
@@ -64,7 +64,7 @@ in
       text = ''
         #!/bin/sh
         act=$(printf 'status\nstart\nstop\nrestart' | sk -p 'Choose an action: ')
-        case "$act" in
+        case $act in
             ''') exit 1 ;;
             status) flags=' --all' ;;
             start|restart) flags=' --state loaded,inactive,failed' ;;
@@ -82,7 +82,7 @@ in
         esac
 
         cmd="systemctl $act$flags $(printf '%s' "$sv" | sed 's/^\[.*\] //')"
-        if [ "$act" = status ]; then
+        if [ $act = status ]; then
             $cmd | less
         else
             echo "Executing \`$cmd\`..."

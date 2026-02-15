@@ -16,7 +16,7 @@
   };
   outputs = inputs@{ nixpkgs, nur, home-manager, nixvim, ... }:
     let
-      mkHomeModule = { user, host }: {
+      mkHomeModule = { host, user }: {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
@@ -33,7 +33,7 @@
         modules = [
           ./host/${host}
           home-manager.nixosModules.home-manager
-          (mkHomeModule { inherit user host; })
+          (mkHomeModule { inherit host user; })
         ];
         specialArgs = { inherit inputs host user; };
       };
@@ -41,7 +41,7 @@
     {
       nixosConfigurations.yeti = mkSystem {
         host = "yeti";
-        user = "frofor";
+        user = "max";
       };
     };
 }

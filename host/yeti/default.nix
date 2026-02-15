@@ -1,17 +1,17 @@
-{ pkgs, host, user, ... }:
+{ pkgs, user, ... }:
 
 {
   imports = [
     ./hardware.nix
-    (import ./vpn.nix { inherit user; })
+    ./vpn.nix
     ../share/boot.nix
-    (import ../share/doas.nix { inherit user; })
-    (import ../share/getty.nix { inherit user; })
-    (import ../share/network.nix { inherit host; })
+    ../share/doas.nix
+    ../share/getty.nix
+    ../share/network.nix
     ../share/pipewire.nix
     ../share/printing.nix
     ../share/rtorrent.nix
-    (import ../share/zsh.nix { inherit pkgs user; })
+    ../share/zsh.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";

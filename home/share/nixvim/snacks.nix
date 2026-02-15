@@ -1,7 +1,6 @@
 { config, ... }:
 
 let
-  inherit (config.lib.nixvim) listToUnkeyedAttrs;
   layoutPreset = "function() return vim.o.columns >= 80 and 'default' or 'vertical' end";
 in
 {
@@ -42,28 +41,28 @@ in
       };
       layout.preset.__raw = layoutPreset;
       layouts = {
-        default.layout = { box = "horizontal"; } // listToUnkeyedAttrs [
+        default.layout = { box = "horizontal"; } // config.lib.nixvim.listToUnkeyedAttrs [
           (
             {
               box = "vertical";
               width = 0.4;
               title = "{title} {live} {flags}";
               border = "solid";
-            } // listToUnkeyedAttrs [
+            } // config.lib.nixvim.listToUnkeyedAttrs [
               { win = "input"; height = 1; }
               { win = "list"; }
             ]
           )
           { win = "preview"; title = "{preview}"; border = "solid"; }
         ];
-        vertical.layout = { box = "vertical"; } // listToUnkeyedAttrs [
+        vertical.layout = { box = "vertical"; } // config.lib.nixvim.listToUnkeyedAttrs [
           (
             {
               box = "vertical";
               height = 0.6;
               title = "{title} {live} {flags}";
               border = "solid";
-            } // listToUnkeyedAttrs [
+            } // config.lib.nixvim.listToUnkeyedAttrs [
               { win = "input"; height = 1; }
               { win = "list"; }
             ]

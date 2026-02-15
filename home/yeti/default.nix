@@ -1,6 +1,7 @@
-{ config, pkgs, host, user, ... }:
+{ config, pkgs, user, ... }:
 
 let
+  nick = "frofor";
   email = "18nraywczifc@protonmail.com";
   gpgKey = "35F577EAAE047585";
   font = "Iosevka NFP";
@@ -11,23 +12,23 @@ in
   imports = [
     ../share/fd.nix
     (import ../share/foot.nix { inherit fontMono; })
-    (import ../share/git.nix { inherit user email gpgKey; })
+    (import ../share/git.nix { inherit nick email gpgKey; })
     ../share/gpg.nix
     ../share/keepassxc.nix
     ../share/librewolf
     ../share/mako.nix
     (import ../share/mpv.nix { inherit mpvSocket; })
-    (import ../share/nixvim { inherit host; })
+    ../share/nixvim
     ../share/opencode.nix
     ../share/ripgrep.nix
     ../share/rtorrent.nix
-    (import ../share/scripts.nix { inherit config pkgs user; })
+    ../share/scripts.nix
     ../share/session-variables.nix
     ../share/skim.nix
     (import ../share/sway.nix { inherit config pkgs font mpvSocket; })
     (import ../share/waybar.nix { inherit font; })
     ../share/wlsunset.nix
-    (import ../share/xdg.nix { inherit pkgs user; })
+    ../share/xdg.nix
     ../share/zsh.nix
   ];
   home = {

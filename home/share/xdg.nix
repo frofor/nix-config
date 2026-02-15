@@ -1,18 +1,18 @@
-{ pkgs, user, ... }:
+{ config, pkgs, ... }:
 
 {
   xdg = {
     enable = true;
     userDirs = {
       enable = true;
-      desktop = "/home/${user}/desktop";
-      documents = "/home/${user}/documents";
-      download = "/home/${user}/downloads";
-      music = "/home/${user}/music";
-      pictures = "/home/${user}/pictures";
-      publicShare = "/home/${user}/public";
-      templates = "/home/${user}/templates";
-      videos = "/home/${user}/videos";
+      desktop = "${config.home.homeDirectory}/desktop";
+      documents = "${config.home.homeDirectory}/documents";
+      download = "${config.home.homeDirectory}/downloads";
+      music = "${config.home.homeDirectory}/music";
+      pictures = "${config.home.homeDirectory}/pictures";
+      publicShare = "${config.home.homeDirectory}/public";
+      templates = "${config.home.homeDirectory}/templates";
+      videos = "${config.home.homeDirectory}/videos";
     };
     desktopEntries = {
       htop = {
