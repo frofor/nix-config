@@ -22,7 +22,7 @@ in
     ../share/opencode.nix
     ../share/ripgrep.nix
     ../share/rtorrent.nix
-    ../share/scripts.nix
+    ../share/scripts
     ../share/session-variables.nix
     ../share/skim.nix
     (import ../share/sway.nix { inherit config pkgs font mpvSocket; })

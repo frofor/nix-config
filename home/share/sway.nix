@@ -87,7 +87,7 @@ in
         XF86AudioNext = "exec echo playlist-next | ${socatBin} - '${mpvSocket}'";
         XF86MonBrightnessDown = "exec ${brightnessctlBin} s 10%-";
         XF86MonBrightnessUp = "exec ${brightnessctlBin} s +10%";
-        Print = "exec \"${scriptsDir}/screenshot.sh\"";
+        Print = "exec \"${scriptsDir}/snip.sh\"";
       };
       bars = [{ command = "waybar"; }];
       window = {
