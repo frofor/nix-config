@@ -8,11 +8,14 @@ in
     text = ''
       #!/bin/sh
       apps=$(fd -e desktop . '/etc/profiles/per-user/${user}/share/applications')
-      app=$(printf %s "$apps" | sk -p 'Choose an application: ')
-      [ -z "$app" ] && exit 1
+      names=$(echo "$apps" | xargs -I {} grep -m 1 ^Name= {} | cut -d = -f 2)
+      name=$(echo "$names" | sk -p 'Choose an application: ')
+      [ -z "$name" ] && exit 1
 
-      echo "Launching \033[33m$app\033[0m..."
-      notify-send "Launching $app..."
+      app=$(echo "$apps" | xargs -I {} grep -l "^Name=$name$" {})
+
+      echo "Launching \033[33m$name\033[0m...\n$app"
+      notify-send "Launching $name..." "$app"
       swaymsg exec "${dexBin} '$app'"
     '';
     executable = true;
