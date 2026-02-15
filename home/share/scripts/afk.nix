@@ -1,13 +1,11 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   home.file."${config.home.homeDirectory}/.local/bin/afk" = {
     text = ''
       #!/bin/sh
-      trap ''' INT
-
       start=$(date +%s)
-      '${pkgs.viu}/bin/viu' "$XDG_VIDEOS_DIR/afk.gif" -w 174 -h 37
+      mpv --vo=caca --loop "$XDG_VIDEOS_DIR/afk.gif"
 
       elapsed=$(($(date +%s) - start))
       echo "AFK for $((elapsed / 60)) minutes $((elapsed % 60)) seconds"
