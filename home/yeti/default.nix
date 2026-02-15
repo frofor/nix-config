@@ -16,7 +16,7 @@ in
     ../share/gpg.nix
     ../share/keepassxc.nix
     ../share/librewolf
-    ../share/mako.nix
+    (import ../share/mako.nix { inherit font; })
     (import ../share/mpv.nix { inherit mpvSocket; })
     ../share/nixvim
     ../share/opencode.nix
