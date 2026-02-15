@@ -4,7 +4,7 @@
   home.file."${scriptsDir}/sk-service.sh" = {
     text = ''
       #!/bin/sh
-      act=$(printf 'status\nstart\nstop\nrestart' | sk -p 'Choose an action: ')
+      act=$(echo 'status\nstart\nstop\nrestart' | sk -p 'Choose an action: ')
       case $act in
           ''') exit 1 ;;
           status) flags=' --all' ;;
@@ -15,14 +15,14 @@
       sys=$($cmd | awk '{print "[sys] " $1}')
       usr=$($cmd --user | awk '{print "[usr] " $1}')
 
-      sv=$(printf '%s%s' "$sys" "$usr" | sk -p 'Choose a service: ')
+      sv=$(echo "$sys\n$usr" | sk -p 'Choose a service: ')
       case "$sv" in
           ''') exit 1 ;;
           [sys]*) flags=' --user' ;;
           *) flags=''' ;;
       esac
 
-      cmd="systemctl $act$flags $(printf '%s' "$sv" | sed 's/^\[.*\] //')"
+      cmd="systemctl $act$flags $(echo "$sv" | sed 's/^\[.*\] //')"
       if [ $act = status ]; then
           $cmd | less
       else
