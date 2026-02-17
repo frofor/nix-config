@@ -1,7 +1,7 @@
 { config, pkgs, font, mpvSocket, ... }:
 
 let
-  mod = "Mod4";
+  mod = "mod4";
   scriptsDir = "${config.home.homeDirectory}/documents/scripts";
   brightnessctlBin = "'${pkgs.brightnessctl}/bin/brightnessctl'";
   socatBin = "'${pkgs.socat}/bin/socat'";
@@ -30,9 +30,10 @@ in
       keybindings = {
         "${mod}+return" = "exec footclient";
         "${mod}+f" = "fullscreen";
-        "${mod}+alt+j" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
-        "${mod}+alt+l" = "exec footclient -F \"${scriptsDir}/sk-launch.sh\"";
-        "${mod}+alt+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
+        "${mod}+control+c" = "exec footclient -F \"${scriptsDir}/sk-cd.sh\"";
+        "${mod}+control+j" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
+        "${mod}+control+l" = "exec footclient -F \"${scriptsDir}/sk-launch.sh\"";
+        "${mod}+control+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
         "${mod}+h" = "focus left";
