@@ -1,8 +1,6 @@
 { myLib, ... }:
 
 myLib.mkScript "sk-journal.sh" ''
-  svs=$(systemctl list-units -t service --plain --no-legend | awk '{print $1}')
-  sv=$(echo "$svs" | sk -p 'Choose a service: ')
-  [ -z "$sv" ] && exit 1
-  journalctl -feu "$sv"
+  sv="$(systemctl list-units -t service --plain --no-legend | awk '{print $1}')"
+  journalctl -feu "$(echo "$sv" | sk -p 'Choose a service: ')" || exit 1
 ''

@@ -25,7 +25,6 @@ in
       startup = [
         { command = "foot -s"; }
         { command = "librewolf"; }
-        { command = "keepassxc"; }
       ];
       keybindings = {
         "${mod}+return" = "exec footclient";
@@ -33,6 +32,7 @@ in
         "${mod}+control+c" = "exec footclient -F \"${scriptsDir}/sk-cd.sh\"";
         "${mod}+control+j" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
         "${mod}+control+l" = "exec footclient -F \"${scriptsDir}/sk-launch.sh\"";
+        "${mod}+control+p" = "exec footclient -F \"${scriptsDir}/sk-pass.sh\"";
         "${mod}+control+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";

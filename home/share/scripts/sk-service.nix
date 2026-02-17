@@ -1,20 +1,18 @@
-{ myLib, ... }:
+{ pkgs, myLib, ... }:
 
 myLib.mkScript "sk-service.sh" ''
-  act=$(echo 'status\nstart\nstop\nrestart' | sk -p 'Choose an action: ')
+  act=$(echo 'status\nstart\nstop\nrestart' | sk -p 'Choose an action: ') || exit 1
   case $act in
-      ''') exit 1 ;;
       status) flags=' --all' ;;
       start|restart) flags=' --state loaded,inactive,failed' ;;
   esac
 
   cmd="systemctl list-units -t service$flags --plain --no-legend"
-  sys=$($cmd | awk '{print "[sys] " $1}')
-  usr=$($cmd --user | awk '{print "[usr] " $1}')
+  sys="$($cmd | awk '{print "[sys] " $1}')"
+  usr="$($cmd --user | awk '{print "[usr] " $1}')"
 
-  sv=$(echo "$sys\n$usr" | sk -p 'Choose a service: ')
+  sv="$(echo "$sys\n$usr" | sk -p 'Choose a service: ')" || exit 1
   case "$sv" in
-      ''') exit 1 ;;
       [sys]*) flags=' --user' ;;
       *) flags=''' ;;
   esac
@@ -24,7 +22,7 @@ myLib.mkScript "sk-service.sh" ''
       $cmd | less
   else
       echo "Executing \`$cmd\`..."
-      notify-send "Executing \`$cmd\`..."
+      '${pkgs.libnotify}/bin/notify-send' "Executing \`$cmd\`..."
       $cmd
   fi
 ''
