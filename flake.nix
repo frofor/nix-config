@@ -16,6 +16,7 @@
   };
   outputs = inputs@{ nixpkgs, nur, home-manager, nixvim, ... }:
     let
+      overlays = [ nur.overlays.default ];
       mkHomeModule = { host, user }: {
         home-manager = {
           useGlobalPkgs = true;
@@ -29,10 +30,7 @@
         };
       };
       mkSystem = { host, user, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ nur.overlays.default ];
-        };
+        pkgs = import nixpkgs { inherit system overlays; };
         modules = [
           ./host/${host}
           home-manager.nixosModules.home-manager
@@ -40,11 +38,17 @@
         ];
         specialArgs = { inherit inputs host user; };
       };
+      mkHome = { host, user, system ? "x86_64-linux" }: home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { inherit system overlays; };
+        modules = [ ./home/${host} nixvim.homeModules.nixvim ];
+        specialArgs = {
+          inherit inputs host user;
+          myLib = import ./lib;
+        };
+      };
     in
     {
-      nixosConfigurations.yeti = mkSystem {
-        host = "yeti";
-        user = "max";
-      };
+      nixosConfigurations.yeti = mkSystem { host = "yeti"; user = "max"; };
+      homeConfigurations.yeti = mkHome { host = "yeti"; user = "max"; };
     };
 }
