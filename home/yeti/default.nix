@@ -41,7 +41,6 @@ in
     packages = with pkgs; [
       android-tools
       gimp
-      ipe
       libreoffice
       monero-cli
       nerd-fonts.iosevka
