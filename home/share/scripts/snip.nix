@@ -10,6 +10,6 @@ myLib.mkScript "snip.sh" ''
   path="${screenshotsDir}/$(date +%Y-%m-%d-%H-%M-%S).png"
   '${pkgs.grim}/bin/grim' -g "$area" "$path"
 
-  echo "Screenshot saved to \033[33m'$path'\033[0m"
-  '${pkgs.libnotify}/bin/notify-send' "Screenshot saved to '$path'"
+  wl-copy "$path"
+  '${pkgs.libnotify}/bin/notify-send' "Screenshot saved to '$path'" 'Path copied to clipboard'
 ''

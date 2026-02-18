@@ -1,5 +1,5 @@
 { myLib, ... }:
 
 myLib.mkScriptLocalBin "vwhich" ''
-  "$VISUAL" "$(which "$1")"
+  which "$1" | xargs "$VISUAL"
 ''

@@ -21,7 +21,6 @@ myLib.mkScript "sk-service.sh" ''
   if [ $act = status ]; then
       $cmd | less
   else
-      echo "Executing \`$cmd\`..."
       '${pkgs.libnotify}/bin/notify-send' "Executing \`$cmd\`..."
       $cmd
   fi

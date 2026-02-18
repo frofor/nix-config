@@ -23,6 +23,5 @@ myLib.mkScript "sk-pass.sh" ''
   esac
 
   wl-copy "$pass"
-  echo "Copied \033[33m$entry#$attr\033[0m to clipboard"
   '${pkgs.libnotify}/bin/notify-send' "Copied $entry#$attr to clipboard"
 ''

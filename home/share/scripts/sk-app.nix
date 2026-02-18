@@ -8,7 +8,6 @@ myLib.mkScript "sk-app.sh" ''
       | sk -p 'Choose an application: ')" || exit 1
   app="$(echo "$apps" | xargs -I {} grep -l "^Name=$name$" {})"
 
-  echo "Launching \033[33m$name\033[0m...\n$app"
   '${pkgs.libnotify}/bin/notify-send' "Launching $name..." "$app"
   swaymsg exec "'${pkgs.dex}/bin/dex' '$app'"
 ''
