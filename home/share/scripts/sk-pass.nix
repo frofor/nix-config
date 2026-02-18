@@ -1,7 +1,7 @@
 { pkgs, myLib, ... }:
 
 myLib.mkScript "sk-pass.sh" ''
-  entry="$(find "$HOME/.password-store" -type f -name '*.gpg' -printf '%P\n' \
+  entry="$(find "$PASSWORD_STORE_DIR" -type f -name '*.gpg' -printf '%P\n' \
       | sed s/\.gpg$// \
       | sk -p 'Choose an entry: ')" || exit 1
 

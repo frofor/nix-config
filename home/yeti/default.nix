@@ -20,6 +20,7 @@ in
     (import ../share/mpv.nix { inherit mpvSocket; })
     ../share/nixvim
     ../share/opencode.nix
+    ../share/pass.nix
     ../share/ripgrep.nix
     ../share/rtorrent.nix
     ../share/scripts
@@ -45,7 +46,6 @@ in
       monero-cli
       nerd-fonts.iosevka
       nil
-      (pass.withExtensions (xs: with xs; [ pass-otp ]))
       (texliveBasic.withPackages (ps: with ps; [ xetex ]))
       tor-browser
       trash-cli
