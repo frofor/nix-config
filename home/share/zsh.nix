@@ -1,43 +1,49 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.dataHome}/zsh";
-    autocd = true;
     defaultKeymap = "viins";
+    autosuggestion = {
+      enable = true;
+      strategy = [ "history" "completion" ];
+    };
     syntaxHighlighting.enable = true;
-    autosuggestion.enable = true;
     history = {
       path = "${config.xdg.dataHome}/zsh/history";
       append = true;
       saveNoDups = true;
     };
     initContent = ''
-      if [ "$TTY" = /dev/tty1 ]; then
-          exec sway
-      fi
+      [ "$TTY" = /dev/tty1 ] && exec sway >/dev/null 2>&1
 
+      source '${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh'
+
+      _comp_options+=(globdots)
       zstyle ':completion:*' completer _complete _ignored _correct _approximate
-      zstyle ':completion:*' completions 1
-      zstyle ':completion:*' file-sort name
-      zstyle ':completion:*' glob 1
-      zstyle ':completion:*' ignore-parents parent pwd
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-      zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*' 'r:|=**'
-      zstyle ':completion:*' max-errors 2
       zstyle ':completion:*' menu select
-      zstyle ':completion:*' substitute 1
+
+      PS1="%F{yellow}[%f%F{magenta}%1~%f]%f$ "
+
+      go-back() {
+          popd >/dev/null 2>&1
+          zle reset-prompt
+      }
+
+      open-repo() {
+          if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+              url="$(git remote get-url origin)"
+              name="$(git rev-parse --show-toplevel | xargs basename)"
+
+              '${pkgs.libnotify}/bin/notify-send' "Opening $name repository..." "$url"
+              xdg-open "$url"
+          fi
+      }
+
+      zle -N go-back && bindkey '^o' go-back
+      zle -N open-repo && bindkey '^g' open-repo
     '';
-    shellAliases = {
-      c = "cargo";
-      d = "doas ";
-      g = "git";
-      l = "ls -lhF --group-directories-first --color=auto";
-      ls = "ls -hF --group-directories-first --color=auto";
-      o = "xdg-open";
-      t = "trash";
-      v = "nvim";
-    };
   };
 }
