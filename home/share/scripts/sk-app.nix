@@ -1,6 +1,6 @@
 { pkgs, myLib, user, ... }:
 
-myLib.mkScript "sk-launch.sh" ''
+myLib.mkScript "sk-app.sh" ''
   apps="$(find '/etc/profiles/per-user/${user}/share/applications' -name '*.desktop')"
   name="$(echo "$apps" \
       | xargs -I {} grep -m 1 ^Name= {} \

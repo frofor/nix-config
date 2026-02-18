@@ -29,11 +29,11 @@ in
       keybindings = {
         "${mod}+return" = "exec footclient";
         "${mod}+f" = "fullscreen";
-        "${mod}+control+c" = "exec footclient -F \"${scriptsDir}/sk-cd.sh\"";
-        "${mod}+control+j" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
-        "${mod}+control+l" = "exec footclient -F \"${scriptsDir}/sk-launch.sh\"";
-        "${mod}+control+p" = "exec footclient -F \"${scriptsDir}/sk-pass.sh\"";
-        "${mod}+control+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
+        "${mod}+a" = "exec footclient -F \"${scriptsDir}/sk-app.sh\"";
+        "${mod}+c" = "exec footclient -F \"${scriptsDir}/sk-cd.sh\"";
+        "${mod}+p" = "exec footclient -F \"${scriptsDir}/sk-pass.sh\"";
+        "${mod}+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
+        "${mod}+u" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
         "${mod}+h" = "focus left";
