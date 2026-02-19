@@ -1,9 +1,7 @@
-{ config, pkgs, font, mpvSocket, ... }:
+{ pkgs, myLib, font, ... }:
 
 let
   mod = "mod4";
-  scriptsDir = "${config.home.homeDirectory}/documents/scripts";
-  brightnessctlBin = "'${pkgs.brightnessctl}/bin/brightnessctl'";
   socatBin = "'${pkgs.socat}/bin/socat'";
 in
 {
@@ -29,11 +27,11 @@ in
       keybindings = {
         "${mod}+return" = "exec footclient";
         "${mod}+f" = "fullscreen";
-        "${mod}+a" = "exec footclient -F \"${scriptsDir}/sk-app.sh\"";
-        "${mod}+c" = "exec footclient -F \"${scriptsDir}/sk-cd.sh\"";
-        "${mod}+p" = "exec footclient -F \"${scriptsDir}/sk-pass.sh\"";
-        "${mod}+s" = "exec footclient -F \"${scriptsDir}/sk-service.sh\"";
-        "${mod}+u" = "exec footclient -F \"${scriptsDir}/sk-journal.sh\"";
+        "${mod}+a" = "exec footclient -F '${myLib.scripts.skApp}'";
+        "${mod}+c" = "exec footclient -F '${myLib.scripts.skCd}'";
+        "${mod}+p" = "exec footclient -F '${myLib.scripts.skPass}'";
+        "${mod}+s" = "exec footclient -F '${myLib.scripts.skService}'";
+        "${mod}+u" = "exec footclient -F '${myLib.scripts.skJournal}'";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
         "${mod}+h" = "focus left";
@@ -81,14 +79,14 @@ in
         XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
         XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
         XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-        XF86AudioPlay = "exec echo cycle pause | ${socatBin} - '${mpvSocket}'";
-        XF86AudioPause = "exec echo cycle pause | ${socatBin} - '${mpvSocket}'";
-        XF86AudioStop = "exec echo cycle pause | ${socatBin} - '${mpvSocket}'";
-        XF86AudioPrev = "exec echo playlist-prev | ${socatBin} - '${mpvSocket}'";
-        XF86AudioNext = "exec echo playlist-next | ${socatBin} - '${mpvSocket}'";
-        XF86MonBrightnessDown = "exec ${brightnessctlBin} s 10%-";
-        XF86MonBrightnessUp = "exec ${brightnessctlBin} s +10%";
-        Print = "exec \"${scriptsDir}/snip.sh\"";
+        XF86AudioPlay = "exec echo cycle pause | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioPause = "exec echo cycle pause | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioStop = "exec echo cycle pause | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioPrev = "exec echo playlist-prev | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioNext = "exec echo playlist-next | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86MonBrightnessDown = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s 10%-";
+        XF86MonBrightnessUp = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s +10%";
+        Print = "exec '${myLib.scripts.snip}'";
       };
       bars = [{ command = "waybar"; }];
       window = {

@@ -1,9 +1,10 @@
-{ config, pkgs, myLib, ... }:
+{ config, pkgs, ... }:
 
 let
   screenshotsDir = "${config.home.homeDirectory}/pictures/screenshots";
 in
-myLib.mkScript "snip.sh" ''
+pkgs.writeShellScript "snip.sh" ''
+  #!/bin/sh
   area="$('${pkgs.slurp}/bin/slurp')" || exit 1
 
   mkdir -p '${screenshotsDir}'

@@ -1,10 +1,10 @@
-{ mpvSocket, ... }:
+{ myLib, ... }:
 
 {
   programs.mpv = {
     enable = true;
     config = {
-      input-ipc-server = mpvSocket;
+      input-ipc-server = myLib.mpvSocket;
       shuffle = "yes";
     };
   };

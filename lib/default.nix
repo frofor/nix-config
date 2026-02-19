@@ -1,20 +1,6 @@
+{ config, pkgs, user, ... }:
+
 {
-  mkScript = name: text: {
-    home.file."documents/scripts/${name}" = {
-      text = ''
-        #!/bin/sh
-        ${text}
-      '';
-      executable = true;
-    };
-  };
-  mkScriptLocalBin = name: text: {
-    home.file.".local/bin/${name}" = {
-      text = ''
-        #!/bin/sh
-        ${text}
-      '';
-      executable = true;
-    };
-  };
+  scripts = import ./scripts { inherit config pkgs user; };
+  mpvSocket = "/run/user/1000/mpv.sock";
 }
