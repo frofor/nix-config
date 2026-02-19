@@ -4,7 +4,7 @@
     ./cmp.nix
     ./dap.nix
     ./gitsigns.nix
-    ./keymaps.nix
+    ./keymaps
     ./lsp
     ./options.nix
     ./snacks.nix
