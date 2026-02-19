@@ -2,7 +2,9 @@
 
 pkgs.writeShellScript "sk-app.sh" ''
   #!/bin/sh
-  apps="$(find '/etc/profiles/per-user/${user}/share/applications' -name '*.desktop')"
+  apps="$(find '/etc/profiles/per-user/${user}/share/applications' \
+      -name '*.desktop' \
+      -exec grep -L ^NoDisplay=true$ {} +)"
   name="$(printf "$apps" \
       | xargs -I {} grep -m 1 ^Name= {} \
       | cut -d = -f 2 \

@@ -15,6 +15,18 @@
       videos = "${config.home.homeDirectory}/videos";
     };
     desktopEntries = {
+      foot = {
+        name = "";
+        noDisplay = true;
+      };
+      footclient = {
+        name = "";
+        noDisplay = true;
+      };
+      foot-server = {
+        name = "";
+        noDisplay = true;
+      };
       htop = {
         name = "htop";
         exec = "${pkgs.foot}/bin/foot ${pkgs.htop}/bin/htop";
@@ -23,13 +35,21 @@
         name = "LibreWolf I2P";
         exec = "${pkgs.librewolf}/bin/librewolf -p i2p";
       };
+      mpv = {
+        name = "";
+        noDisplay = true;
+      };
       network-manager = {
         name = "NetworkManager";
         exec = "${pkgs.foot}/bin/foot ${pkgs.networkmanager}/bin/nmtui-connect";
       };
-      opencode = {
-        name = "Opencode";
-        exec = "${pkgs.foot}/bin/foot ${pkgs.opencode}/bin/opencode";
+      "org.freedesktop.Xwayland" = {
+        name = "";
+        noDisplay = true;
+      };
+      umpv = {
+        name = "";
+        noDisplay = true;
       };
     };
     mimeApps = {
