@@ -9,16 +9,13 @@ in
     enable = true;
     config = {
       modifier = mod;
-      modes.resize = {
-        h = "resize shrink width 25 px";
-        left = "resize shrink width 25 px";
-        j = "resize grow height 25 px";
-        down = "resize grow height 25 px";
-        k = "resize shrink height 25 px";
-        up = "resize shrink height 25 px";
-        l = "resize grow width 25 px";
-        right = "resize grow width 25 px";
-        escape = "mode default";
+      input."*" = {
+        xkb_layout = "us,de,ru";
+        xkb_options = "grp:alt_shift_toggle";
+      };
+      output = {
+        HDMI-A-1.pos = "0 0";
+        eDP-1.pos = "1920 0";
       };
       startup = [
         { command = "foot -s"; }
@@ -88,20 +85,27 @@ in
         XF86MonBrightnessUp = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s +10%";
         Print = "exec '${myLib.scripts.snip}'";
       };
-      bars = [{ command = "waybar"; }];
-      window = {
-        titlebar = false;
-        border = 1;
+      modes.resize = {
+        h = "resize shrink width 25 px";
+        left = "resize shrink width 25 px";
+        j = "resize grow height 25 px";
+        down = "resize grow height 25 px";
+        k = "resize shrink height 25 px";
+        up = "resize shrink height 25 px";
+        l = "resize grow width 25 px";
+        right = "resize grow width 25 px";
+        escape = "mode default";
       };
       fonts = {
         names = [ font ];
         style = "Regular";
         size = 10.0;
       };
-      output = {
-        HDMI-A-1.pos = "0 0";
-        eDP-1.pos = "1920 0";
+      window = {
+        titlebar = false;
+        border = 1;
       };
+      bars = [{ command = "waybar"; }];
       assigns = {
         "2" = [{ app_id = "librewolf"; }];
         "3" = [{ app_id = "org.keepassxc.KeePassXC"; }];

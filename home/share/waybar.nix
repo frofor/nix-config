@@ -18,7 +18,7 @@ in
       spacing = 30;
       modules-left = [ "sway/workspaces" "sway/scratchpad" "sway/mode" "sway/window" ];
       modules-center = [ "clock" ];
-      modules-right = [ "network" "backlight" "pulseaudio" "battery" ];
+      modules-right = [ "network" "backlight" "pulseaudio" "sway/language" "battery" ];
       "sway/workspaces" = {
         all-outputs = true;
         warp-on-scroll = false;
@@ -70,6 +70,10 @@ in
           headphone = "󰋋";
           headset = "󰋎";
         };
+        tooltip = false;
+      };
+      "sway/language" = {
+        format = "󰇧 {}";
         tooltip = false;
       };
       battery = {
