@@ -38,7 +38,7 @@
       mkHome = { host, user, system ? "x86_64-linux" }: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { inherit system overlays; };
         modules = [ ./home/${host} nixvim.homeModules.nixvim ];
-        specialArgs = { inherit inputs host user; };
+        extraSpecialArgs = { inherit inputs host user; };
       };
     in
     {
