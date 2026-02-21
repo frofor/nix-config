@@ -8,20 +8,28 @@
           name = "DuckDuckGo";
           urls = [{ template = "https://noai.duckduckgo.com?q={searchTerms}"; }];
         };
-        nixOsWiki = {
-          name = "NixOS Wiki";
+        nixWiki = {
+          name = "Nix Wiki";
           urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
           definedAliases = [ "@nw" ];
         };
-        nixOsPackages = {
-          name = "NixOS Packages";
+        nixPackages = {
+          name = "Nix Packages";
           urls = [{ template = "https://search.nixos.org/packages?query={searchTerms}"; }];
           definedAliases = [ "@np" ];
         };
-        nixOsOptions = {
-          name = "NixOS Options";
+        nixOptions = {
+          name = "Nix Options";
           urls = [{ template = "https://mynixos.com/search?q=%2foption%2f+{searchTerms}"; }];
           definedAliases = [ "@no" ];
+        };
+        nixvimOptions = {
+          name = "Nixvim Options";
+          urls = [{
+            template =
+              "https://nix-community.github.io/nixvim/NeovimOptions/index.html?search={searchTerms}";
+          }];
+          definedAliases = [ "@nvo" ];
         };
         bing.metaData.hidden = true;
         google.metaData.hidden = true;
