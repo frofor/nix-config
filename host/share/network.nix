@@ -3,6 +3,14 @@
 {
   networking = {
     hostName = host;
-    networkmanager.enable = true;
+    enableIPv6 = false;
+    networkmanager = {
+      enable = true;
+      ethernet.macAddress = "random";
+      wifi = {
+        macAddress = "random";
+        powersave = true;
+      };
+    };
   };
 }
