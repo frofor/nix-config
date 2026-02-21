@@ -4,6 +4,7 @@ pkgs.writeShellScript "sk-pass.sh" ''
   #!/bin/sh
   entry="$(find "$PASSWORD_STORE_DIR" -type f -name '*.gpg' -printf '%P\n' \
       | sed s/\.gpg$// \
+      | sort -V \
       | sk -p 'Choose an entry: ')" || exit 1
 
   case "$entry" in
@@ -14,8 +15,10 @@ pkgs.writeShellScript "sk-pass.sh" ''
       *)
           attrs="Password: $(pass show "$entry")" || exit 1
           if [ $(printf %s "$attrs" | wc -l) -gt 1 ]; then
-              attr="$(printf %s "$attrs" | awk -F : '{print $1}' | sk -p 'Choose an attribute: ')" \
-                  || exit 1
+              attr="$(printf %s "$attrs" \
+                  | awk -F : '{print $1}' \
+                  | sort -V \
+                  | sk -p 'Choose an attribute: ')" || exit 1
           else
               attr="$(printf %s "$attrs" | awk -F : '{print $1}')"
           fi

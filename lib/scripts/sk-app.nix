@@ -7,7 +7,8 @@ pkgs.writeShellScript "sk-app.sh" ''
       -exec grep -L ^NoDisplay=true$ {} +)"
   name="$(printf %s "$apps" \
       | xargs -I {} grep -m 1 ^Name= {} \
-      | cut -d = -f 2 \
+      | cut -d= -f2 \
+      | sort -V \
       | sk -p 'Choose an application: ')" || exit 1
   app="$(printf %s "$apps" | xargs -I {} grep -l "^Name=$name$" {})"
 

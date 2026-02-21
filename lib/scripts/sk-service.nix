@@ -12,7 +12,7 @@ pkgs.writeShellScript "sk-service.sh" ''
   sys="$($cmd | awk '{print "[sys] " $1}')"
   usr="$($cmd --user | awk '{print "[usr] " $1}')"
 
-  sv="$(printf '%s\n%s' "$sys" "$usr" | sk -p 'Choose a service: ')" || exit 1
+  sv="$(printf '%s\n%s' "$sys" "$usr" | sort -V -t. -k1,1 | sk -p 'Choose a service: ')" || exit 1
   case "$sv" in
       [sys]*) flags=' --user' ;;
       *) flags=''' ;;
