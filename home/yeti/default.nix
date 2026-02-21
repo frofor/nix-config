@@ -22,7 +22,7 @@ in
     ../share/keepassxc.nix
     ../share/librewolf
     (import ../share/mako.nix { inherit font; })
-    (import ../share/mpv.nix { inherit myLib; })
+    (import ../share/mpv.nix { inherit pkgs myLib; })
     ../share/nixvim
     ../share/opencode.nix
     ../share/pass.nix
