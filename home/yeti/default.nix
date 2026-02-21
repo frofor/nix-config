@@ -7,6 +7,10 @@ let
   gpgKey = "35F577EAAE047585";
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
+  publicKeys = [
+    { source = ./gpg/frofor.asc; trust = 5; }
+    { source = ./gpg/pass.asc; trust = 5; }
+  ];
 in
 {
   imports = [
@@ -14,7 +18,7 @@ in
     ../share/fd.nix
     (import ../share/foot.nix { inherit fontMono; })
     (import ../share/git.nix { inherit nick email gpgKey; })
-    ../share/gpg.nix
+    (import ../share/gpg.nix { inherit config pkgs publicKeys; })
     ../share/keepassxc.nix
     ../share/librewolf
     (import ../share/mako.nix { inherit font; })
