@@ -2,7 +2,6 @@
 
 {
   security = {
-    sudo.enable = false;
     doas = {
       enable = true;
       extraRules = [{
@@ -11,5 +10,6 @@
         persist = true;
       }];
     };
+    sudo.enable = false;
   };
 }
