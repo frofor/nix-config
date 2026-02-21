@@ -7,6 +7,6 @@
       input-ipc-server = myLib.mpvSocket;
       shuffle = "yes";
     };
-    scripts = with pkgs.mpvScripts; [ mpv-notify-send ];
+    scripts = with pkgs.mpvScripts; [ mpris mpv-notify-send ];
   };
 }
