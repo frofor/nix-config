@@ -5,11 +5,11 @@
     ./hardware.nix
     ./vpn.nix
     ../share/boot.nix
+    ../share/cups.nix
     ../share/doas.nix
     ../share/getty.nix
     ../share/network.nix
     ../share/pipewire.nix
-    ../share/printing.nix
     ../share/rtorrent.nix
     ../share/zsh.nix
   ];
