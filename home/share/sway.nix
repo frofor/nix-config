@@ -76,11 +76,11 @@ in
         XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
         XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
         XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-        XF86AudioPlay = "exec echo cycle pause | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioPause = "exec echo cycle pause | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioStop = "exec echo cycle pause | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioPrev = "exec echo playlist-prev | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioNext = "exec echo playlist-next | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioPlay = "exec printf 'cycle pause\\n' | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioPause = "exec printf 'cycle pause\\n' | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioStop = "exec printf 'cycle pause\\n' | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioPrev = "exec printf 'playlist-prev\\n' | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioNext = "exec printf 'playlist-next\\n' | ${socatBin} - '${myLib.mpvSocket}'";
         XF86MonBrightnessDown = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s 10%-";
         XF86MonBrightnessUp = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s +10%";
         Print = "exec '${myLib.scripts.snip}'";

@@ -13,13 +13,13 @@ pkgs.writeShellScript "sk-pass.sh" ''
       ;;
       *)
           attrs="Password: $(pass show "$entry")" || exit 1
-          if [ $(printf "$attrs" | wc -l) -gt 1 ]; then
-              attr="$(printf "$attrs" | awk -F : '{print $1}' | sk -p 'Choose an attribute: ')" \
+          if [ $(printf %s "$attrs" | wc -l) -gt 1 ]; then
+              attr="$(printf %s "$attrs" | awk -F : '{print $1}' | sk -p 'Choose an attribute: ')" \
                   || exit 1
           else
-              attr="$(printf "$attrs" | awk -F : '{print $1}')"
+              attr="$(printf %s "$attrs" | awk -F : '{print $1}')"
           fi
-          pass="$(printf "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')"
+          pass="$(printf %s "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')"
       ;;
   esac
 
