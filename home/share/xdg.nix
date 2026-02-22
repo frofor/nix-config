@@ -36,8 +36,8 @@
         exec = "librewolf -p i2p";
       };
       mpv = {
-        name = "mpv";
-        exec = "mpv \"${config.home.homeDirectory}/music\"";
+        name = "";
+        noDisplay = true;
       };
       network-manager = {
         name = "NetworkManager";
@@ -48,8 +48,8 @@
         noDisplay = true;
       };
       umpv = {
-        name = "";
-        noDisplay = true;
+        name = "umpv";
+        exec = "umpv \"${config.home.homeDirectory}/music\"";
       };
     };
     mimeApps = {

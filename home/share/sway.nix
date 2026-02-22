@@ -108,7 +108,7 @@ in
       bars = [{ command = "waybar"; }];
       assigns = {
         "2" = [{ app_id = "librewolf"; }];
-        "3" = [{ app_id = "org.keepassxc.KeePassXC"; }];
+        "3" = [{ app_id = "mpv"; }];
         "4" = [{ app_id = "gimp"; }];
       };
       workspaceOutputAssign = [
