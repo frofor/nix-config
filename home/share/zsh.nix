@@ -25,7 +25,7 @@
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       zstyle ':completion:*' menu select
 
-      PS1="%F{yellow}[%f%F{magenta}%1~%f]%f$ "
+      PS1="%F{yellow}[%f%F{magenta}%1~%f%F{yellow}]%f$ "
 
       go-back() {
           popd >/dev/null 2>&1
