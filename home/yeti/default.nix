@@ -48,7 +48,6 @@ in
     myLib.scripts.vwhich
     nerd-fonts.iosevka
     nil
-    (texliveBasic.withPackages (ps: with ps; [ xetex ]))
     tor-browser
     trash-cli
     wl-clipboard
