@@ -2,7 +2,9 @@
 
 pkgs.writeShellScript "sk-service.sh" ''
   #!/bin/sh
-  act=$(printf 'status\nstart\nstop\nrestart\n' | sk -p 'Choose an action: ') || exit 1
+  set -e
+
+  act=$(printf 'status\nstart\nstop\nrestart\n' | sk -p 'Choose an action: ')
   case $act in
       status) flags=' --all' ;;
       start|restart) flags=' --state loaded,inactive,failed' ;;
@@ -12,7 +14,7 @@ pkgs.writeShellScript "sk-service.sh" ''
   sys="$($cmd | awk '{print "[sys] " $1}')"
   usr="$($cmd --user | awk '{print "[usr] " $1}')"
 
-  sv="$(printf '%s\n%s\n' "$sys" "$usr" | sort -V -t. -k1,1 | sk -p 'Choose a service: ')" || exit 1
+  sv="$(printf '%s\n%s\n' "$sys" "$usr" | sort -V -t. -k1,1 | sk -p 'Choose a service: ')"
   case "$sv" in
       [sys]*) flags=' --user' ;;
       *) flags=''' ;;

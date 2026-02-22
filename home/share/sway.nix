@@ -28,6 +28,7 @@ in
         "${mod}+p" = "exec footclient -F ${myLib.scripts.skPass}";
         "${mod}+s" = "exec footclient -F ${myLib.scripts.skService}";
         "${mod}+u" = "exec footclient -F ${myLib.scripts.skJournal}";
+        "${mod}+w" = "exec footclient -F ${myLib.scripts.skWeather}";
         "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
         "${mod}+h" = "focus left";
@@ -69,7 +70,7 @@ in
         "${mod}+shift+0" = "move container to workspace number 10";
         "${mod}+minus" = "scratchpad show";
         "${mod}+shift+minus" = "move scratchpad";
-        "${mod}+w" = "layout tabbed";
+        "${mod}+t" = "layout tabbed";
         "${mod}+space" = "focus mode_toggle";
         "${mod}+shift+space" = "floating toggle";
         XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";

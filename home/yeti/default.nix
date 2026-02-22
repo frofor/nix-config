@@ -1,16 +1,18 @@
 { config, pkgs, user, ... }:
 
 let
-  myLib = import ../../lib { inherit config pkgs user; };
   nick = "frofor";
   email = "18nraywczifc@protonmail.com";
-  gpgKey = "35F577EAAE047585";
+  latitude = "51.83";
+  longitude = "10.78";
   font = "Iosevka NFP";
   fontMono = "Iosevka NF";
+  gpgKey = "35F577EAAE047585";
   publicKeys = [
     { source = ./gpg/frofor.asc; trust = 5; }
     { source = ./gpg/pass.asc; trust = 5; }
   ];
+  myLib = import ../../lib { inherit config pkgs user latitude longitude; };
 in
 {
   imports = [

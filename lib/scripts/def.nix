@@ -2,6 +2,8 @@
 
 pkgs.writeShellScriptBin "def" ''
   #!/bin/sh
+  set -e
+
   if [ -z "$1" ]; then
       printf '\e[31mUsage:\e[0m def \e[33m<WORD>\e[0m\n'
       printf 'Look up the definition of the word in dict.org\n'
