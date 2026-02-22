@@ -29,19 +29,19 @@
       };
       htop = {
         name = "htop";
-        exec = "${pkgs.foot}/bin/foot ${pkgs.htop}/bin/htop";
+        exec = "footclient ${pkgs.htop}/bin/htop";
       };
       librewolf-i2p = {
         name = "LibreWolf I2P";
-        exec = "${pkgs.librewolf}/bin/librewolf -p i2p";
+        exec = "librewolf -p i2p";
       };
       mpv = {
-        name = "";
-        noDisplay = true;
+        name = "mpv";
+        exec = "mpv \"${config.home.homeDirectory}/music\"";
       };
       network-manager = {
         name = "NetworkManager";
-        exec = "${pkgs.foot}/bin/foot ${pkgs.networkmanager}/bin/nmtui-connect";
+        exec = "footclient nmtui";
       };
       "org.freedesktop.Xwayland" = {
         name = "";
