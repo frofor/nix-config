@@ -7,5 +7,5 @@ pkgs.writeShellScriptBin "def" ''
       printf 'Look up the definition of the word in dict.org\n'
       exit 1
   fi
-  '${pkgs.dict}/bin/dict' -h dict.org "$1" | less
+  ${pkgs.dict}/bin/dict -h dict.org "$1" | less
 ''

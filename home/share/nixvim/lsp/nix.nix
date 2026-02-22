@@ -2,7 +2,7 @@
 
 let
   options =
-    "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.\"${host}\".options";
+    "(builtins.getFlake \"git+file://\${toString ./.}\").nixosConfigurations.\"${host}\".options";
 in
 {
   programs.nixvim.plugins.lsp.servers.nixd = {
@@ -12,7 +12,7 @@ in
       formatting.command = [ "nixpkgs-fmt" ];
       options = {
         nixos.expr = options;
-        home-manager.expr = options + ".home-manager.users.type.getSubOptions []";
+        home-manager.expr = "${options}.home-manager.users.type.getSubOptions []";
       };
     };
   };

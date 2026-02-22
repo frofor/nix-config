@@ -18,7 +18,7 @@
     initContent = ''
       [ "$TTY" = /dev/tty1 ] && exec sway >/dev/null 2>&1
 
-      source '${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh'
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
       _comp_options+=(globdots)
       zstyle ':completion:*' completer _complete _ignored _correct _approximate
@@ -37,7 +37,7 @@
               url="$(git remote get-url origin)"
               name="$(git rev-parse --show-toplevel | xargs basename)"
 
-              '${pkgs.libnotify}/bin/notify-send' "Opening $name repository..." "$url"
+              ${pkgs.libnotify}/bin/notify-send "Opening $name repository..." "$url"
               xdg-open "$url"
           fi
       }

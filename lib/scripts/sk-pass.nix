@@ -14,18 +14,18 @@ pkgs.writeShellScript "sk-pass.sh" ''
       ;;
       *)
           attrs="Password: $(pass show "$entry")" || exit 1
-          if [ $(printf %s "$attrs" | wc -l) -gt 1 ]; then
-              attr="$(printf %s "$attrs" \
+          if [ $(printf '%s\n' "$attrs" | wc -l) -gt 1 ]; then
+              attr="$(printf '%s\n' "$attrs" \
                   | awk -F : '{print $1}' \
                   | sort -V \
                   | sk -p 'Choose an attribute: ')" || exit 1
           else
-              attr="$(printf %s "$attrs" | awk -F : '{print $1}')"
+              attr="$(printf '%s\n' "$attrs" | awk -F : '{print $1}')"
           fi
-          pass="$(printf %s "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')"
+          pass="$(printf '%s\n' "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')"
       ;;
   esac
 
   wl-copy "$pass"
-  '${pkgs.libnotify}/bin/notify-send' "Copied $entry#$attr to clipboard"
+  ${pkgs.libnotify}/bin/notify-send "Copied $entry#$attr to clipboard"
 ''
