@@ -2,7 +2,6 @@
 
 let
   mod = "mod4";
-  socatBin = "'${pkgs.socat}/bin/socat'";
 in
 {
   wayland.windowManager.sway = {
@@ -76,11 +75,11 @@ in
         XF86AudioLowerVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%-";
         XF86AudioRaiseVolume = "exec wpctl set-volume @DEFAULT_SINK@ 10%+";
         XF86AudioMute = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-        XF86AudioPlay = "exec printf 'cycle pause\\n' | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioPause = "exec printf 'cycle pause\\n' | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioStop = "exec printf 'cycle pause\\n' | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioPrev = "exec printf 'playlist-prev\\n' | ${socatBin} - '${myLib.mpvSocket}'";
-        XF86AudioNext = "exec printf 'playlist-next\\n' | ${socatBin} - '${myLib.mpvSocket}'";
+        XF86AudioPlay = "exec '${pkgs.playerctl}/bin/playerctl' play-pause";
+        XF86AudioPause = "exec '${pkgs.playerctl}/bin/playerctl' play-pause";
+        XF86AudioStop = "exec '${pkgs.playerctl}/bin/playerctl' play-pause";
+        XF86AudioPrev = "exec '${pkgs.playerctl}/bin/playerctl' previous";
+        XF86AudioNext = "exec '${pkgs.playerctl}/bin/playerctl' next";
         XF86MonBrightnessDown = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s 10%-";
         XF86MonBrightnessUp = "exec '${pkgs.brightnessctl}/bin/brightnessctl' s +10%";
         Print = "exec '${myLib.scripts.snip}'";
