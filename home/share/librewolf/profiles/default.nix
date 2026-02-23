@@ -71,6 +71,7 @@
       "browser.tabs.hoverPreview.enabled" = false;
       "network.trr.mode" = 3;
       "network.trr.uri" = "https://dns.quad9.net/dns-query"; # Quad9 (Malware blocking)
+      "privacy.donottrackheader.enabled" = true;
     };
   };
 }

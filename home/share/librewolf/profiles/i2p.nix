@@ -36,6 +36,8 @@
       "browser.search.separatePrivateDefault" = false;
       "browser.tabs.hoverPreview.enabled" = false;
       "javascript.enabled" = false;
+      "privacy.donottrackheader.enabled" = true;
+      "privacy.resistFingerprinting.letterboxing" = true;
     };
   };
 }
