@@ -5,8 +5,6 @@
     inherit publicKeys;
     enable = true;
     homedir = "${config.xdg.dataHome}/gnupg";
-    mutableKeys = false;
-    mutableTrust = false;
   };
   services.gpg-agent = {
     enable = true;
