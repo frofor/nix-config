@@ -1,4 +1,4 @@
-{ pkgs, myLib, font, ... }:
+{ pkgs, myLib, font, colors, ... }:
 
 let
   mod = "mod4";
@@ -117,6 +117,13 @@ in
         { workspace = "3"; output = "eDP-1"; }
         { workspace = "4"; output = "HDMI-A-1"; }
       ];
+      colors.focused = {
+        background = "#${colors.orange}";
+        border = "#${colors.orange}";
+        text = "#${colors.black}";
+        indicator = "#${colors.red}";
+        childBorder = "#${colors.orange}";
+      };
     };
   };
 }

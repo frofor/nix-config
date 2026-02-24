@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, colors, ... }:
 
 {
   programs.librewolf.profiles.default = {
@@ -56,11 +56,32 @@
           };
           force = true;
         };
-        # Mossy green
-        "{f9261f02-c03c-4352-92ee-78dd8b41ca98}".force = true;
       };
       force = true;
     };
+    userChrome = ''
+      .tabbrowser-tab {
+          padding-inline: 0 !important;
+      }
+
+      .tabbrowser-tab[selected] .tab-background {
+          background-color: #${colors.orange} !important;
+      }
+
+      .tabbrowser-tab[selected] .tab-label,
+      .tabbrowser-tab[selected] .tab-text {
+          color: #${colors.black} !important;
+      }
+
+      * {
+          border-radius: 0px !important;
+      }
+    '';
+    userContent = ''
+      * {
+          border-radius: 0px !important;
+      }
+    '';
     settings = {
       "browser.ctrlTab.sortByRecentlyUsed" = true;
       "browser.download.always_ask_before_handling_new_types" = true;
@@ -72,6 +93,7 @@
       "network.trr.mode" = 3;
       "network.trr.uri" = "https://dns.quad9.net/dns-query"; # Quad9 (Malware blocking)
       "privacy.donottrackheader.enabled" = true;
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     };
   };
 }

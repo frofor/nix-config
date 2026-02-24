@@ -1,16 +1,5 @@
-{ font, ... }:
+{ font, colors, ... }:
 
-let
-  color = {
-    black = "#000000";
-    white = "#ffffff";
-    red = "#ff0000";
-    orange = "#ff5a00";
-    yellow = "#ffff00";
-    green = "#00ff00";
-    blue = "#0000ff";
-  };
-in
 {
   programs.waybar = {
     enable = true;
@@ -62,9 +51,9 @@ in
         on-scroll-up = "";
         on-scroll-down = "";
         format = "{icon} {volume}% {format_source}";
-        format-muted = "<span color=\"${color.red}\">󰖁</span> {format_source}";
+        format-muted = "<span color=\"#${colors.red}\">󰖁</span> {format_source}";
         format-source = " {volume}%";
-        format-source-muted = "<span color=\"${color.red}\"></span>";
+        format-source-muted = "<span color=\"#${colors.red}\"></span>";
         format-icons = {
           default = [ "󰕿" "󰖀" "󰕾" ];
           headphone = "󰋋";
@@ -101,8 +90,8 @@ in
       }
 
       #waybar {
-          background-color: ${color.black};
-          color: ${color.white};
+          background-color: #${colors.black};
+          color: #${colors.white};
       }
 
       .modules-right {
@@ -112,7 +101,7 @@ in
       #workspaces button {
           border: none;
           border-radius: 0;
-          color: ${color.white};
+          color: #${colors.orange};
           padding: 0px 4px;
           transition: initial;
       }
@@ -124,12 +113,12 @@ in
       }
 
       #workspaces button.focused {
-          background-color: ${color.white};
-          color: ${color.black};
+          background-color: #${colors.orange};
+          color: #${colors.black};
       }
 
       #workspaces button.urgent {
-          background-color: ${color.red};
+          background-color: #${colors.red};
       }
 
       #mode {
@@ -138,27 +127,27 @@ in
       }
 
       #network.disconnected, #network.disabled {
-          color: ${color.red};
+          color: #${colors.red};
       }
 
       #battery {
-          color: ${color.green};
+          color: #${colors.green};
       }
 
       #battery.discharging {
-          color: ${color.white};
+          color: #${colors.white};
       }
 
       #battery.discharging.medium {
-          color: ${color.yellow};
+          color: #${colors.yellow};
       }
 
       #battery.discharging.low {
-          color: ${color.orange};
+          color: #${colors.orange};
       }
 
       #battery.discharging.critical {
-          color: ${color.red};
+          color: #${colors.red};
       }
     '';
   };

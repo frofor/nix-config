@@ -12,18 +12,27 @@ let
     { source = ./gpg/frofor.asc; trust = 5; }
     { source = ./gpg/pass.asc; trust = 5; }
   ];
+  colors = {
+    black = "000000";
+    white = "ffffff";
+    red = "ff0000";
+    orange = "ff5a00";
+    yellow = "ffff00";
+    green = "00ff00";
+    blue = "0000ff";
+  };
   myLib = import ../../lib { inherit config pkgs user latitude longitude; };
 in
 {
   imports = [
     ../share
     ../share/fd.nix
-    (import ../share/foot.nix { inherit fontMono; })
+    (import ../share/foot.nix { inherit fontMono colors; })
     (import ../share/git.nix { inherit nick email gpgKey; })
     (import ../share/gpg.nix { inherit config pkgs publicKeys; })
     ../share/keepassxc.nix
-    ../share/librewolf
-    (import ../share/mako.nix { inherit font; })
+    (import ../share/librewolf { inherit pkgs colors; })
+    (import ../share/mako.nix { inherit font colors; })
     ../share/mpv.nix
     ../share/nixvim
     ../share/opencode.nix
@@ -32,11 +41,11 @@ in
     ../share/rtorrent.nix
     ../share/session-variables.nix
     ../share/shell-aliases.nix
-    ../share/skim.nix
+    (import ../share/skim.nix { inherit colors; })
+    (import ../share/sway.nix { inherit pkgs myLib font colors; })
     ../share/translate-shell.nix
-    (import ../share/sway.nix { inherit pkgs myLib font; })
-    (import ../share/waybar.nix { inherit font; })
-    ../share/wlsunset.nix
+    (import ../share/waybar.nix { inherit font colors; })
+    (import ../share/wlsunset.nix { inherit latitude longitude; })
     ../share/xdg.nix
     ../share/zsh.nix
   ];

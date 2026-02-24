@@ -27,6 +27,16 @@
       };
       force = true;
     };
+    userChrome = ''
+      * {
+          border-radius: 0px !important;
+      }
+    '';
+    userContent = ''
+      * {
+          border-radius: 0px !important;
+      }
+    '';
     settings = {
       "browser.ctrlTab.sortByRecentlyUsed" = true;
       "browser.download.always_ask_before_handling_new_types" = true;
@@ -38,6 +48,7 @@
       "javascript.enabled" = false;
       "privacy.donottrackheader.enabled" = true;
       "privacy.resistFingerprinting.letterboxing" = true;
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     };
   };
 }

@@ -1,4 +1,4 @@
-{ fontMono, ... }:
+{ fontMono, colors, ... }:
 
 {
   programs.foot = {
@@ -11,8 +11,8 @@
         "scrollback-up-half-page" = "Alt+u";
       };
       colors = {
-        foreground = "ffffff";
-        background = "000000";
+        foreground = colors.white;
+        background = colors.black;
       };
     };
   };

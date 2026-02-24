@@ -1,7 +1,8 @@
+{ latitude, longitude, ... }:
+
 {
   services.wlsunset = {
+    inherit latitude longitude;
     enable = true;
-    latitude = "51.5";
-    longitude = "13.4";
   };
 }
