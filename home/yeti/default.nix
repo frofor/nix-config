@@ -46,7 +46,7 @@ in
     ../share/translate-shell.nix
     (import ../share/waybar.nix { inherit font colors; })
     (import ../share/wlsunset.nix { inherit latitude longitude; })
-    ../share/xdg.nix
+    (import ../share/xdg.nix { inherit config pkgs myLib; })
     ../share/zsh.nix
   ];
   home.packages = with pkgs; [
