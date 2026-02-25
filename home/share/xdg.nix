@@ -43,6 +43,10 @@
         name = "NetworkManager";
         exec = "footclient nmtui";
       };
+      nvim = {
+        name = "";
+        noDisplay = true;
+      };
       "org.freedesktop.Xwayland" = {
         name = "";
         noDisplay = true;
@@ -54,10 +58,6 @@
       sk-weather = {
         name = "sk-weather";
         exec = "footclient -F ${myLib.scripts.skWeather}";
-      };
-      umpv = {
-        name = "umpv";
-        exec = "umpv \"${config.home.homeDirectory}/music\"";
       };
     };
     mimeApps = {
