@@ -64,6 +64,10 @@
           padding-inline: 0 !important;
       }
 
+      .tabbrowser-tab .close-icon {
+          display: none;
+      }
+
       .tabbrowser-tab[selected] .tab-background {
           background-color: #${colors.orange} !important;
       }
