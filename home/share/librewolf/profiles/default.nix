@@ -64,8 +64,17 @@
           padding-inline: 0 !important;
       }
 
-      .tabbrowser-tab .close-icon {
-          display: none;
+      .tabbrowser-tab .close-icon,
+      #tabbrowser-arrowscrollbox-periphery,
+      #alltabs-button,
+      .titlebar-buttonbox-container,
+      #urlbar-go-button,
+      #star-button-box {
+          display: none !important;
+      }
+
+      .tabbrowser-tab .tab-background {
+          margin: 0 !important;
       }
 
       .tabbrowser-tab[selected] .tab-background {
@@ -75,6 +84,10 @@
       .tabbrowser-tab[selected] .tab-label,
       .tabbrowser-tab[selected] .tab-text {
           color: #${colors.black} !important;
+      }
+
+      .tabbrowser-tab[selected] .tab-icon-image {
+          fill: #${colors.black} !important;
       }
 
       * {
@@ -94,6 +107,7 @@
       "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
       "browser.search.separatePrivateDefault" = false;
       "browser.tabs.hoverPreview.enabled" = false;
+      "browser.toolbars.bookmarks.visibility" = "newtab";
       "network.trr.mode" = 3;
       "network.trr.uri" = "https://dns.quad9.net/dns-query"; # Quad9 (Malware blocking)
       "privacy.donottrackheader.enabled" = true;

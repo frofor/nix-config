@@ -45,6 +45,7 @@
       "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
       "browser.search.separatePrivateDefault" = false;
       "browser.tabs.hoverPreview.enabled" = false;
+      "browser.toolbars.bookmarks.visibility" = "newtab";
       "javascript.enabled" = false;
       "privacy.donottrackheader.enabled" = true;
       "privacy.resistFingerprinting.letterboxing" = true;
