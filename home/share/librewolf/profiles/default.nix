@@ -81,6 +81,7 @@
           background-color: #${colors.orange} !important;
       }
 
+      .tabbrowser-tab[selected] .tab-throbber,
       .tabbrowser-tab[selected] .tab-label,
       .tabbrowser-tab[selected] .tab-text {
           color: #${colors.black} !important;
@@ -91,16 +92,17 @@
       }
 
       * {
-          border-radius: 0px !important;
+          border-radius: 0 !important;
       }
     '';
     userContent = ''
       * {
-          border-radius: 0px !important;
+          border-radius: 0 !important;
       }
     '';
     settings = {
       "browser.ctrlTab.sortByRecentlyUsed" = true;
+      "browser.display.use_document_fonts" = 0;
       "browser.download.always_ask_before_handling_new_types" = true;
       "browser.newtabpage.activity-stream.feeds.section.highlights" = false;
       "browser.newtabpage.activity-stream.showSearch" = false;
