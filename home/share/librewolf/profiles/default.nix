@@ -60,8 +60,18 @@
       force = true;
     };
     userChrome = ''
-      .tabbrowser-tab {
-          padding-inline: 0 !important;
+      :root {
+          --tab-block-margin: none !important;
+          --tab-overflow-clip-margin: none !important;
+          --tab-selected-bgcolor: #${colors.orange} !important;
+          --tab-selected-textcolor: #${colors.black} !important;
+          --toolbox-bgcolor: #${colors.black} !important;
+          --toolbox-bgcolor-inactive: #${colors.black} !important;
+          --toolbar-bgcolor: #${colors.black} !important;
+      }
+
+      .tabbrowser-tab[selected] {
+          --button-icon-fill: #${colors.black} !important;
       }
 
       .tabbrowser-tab .close-icon,
@@ -73,31 +83,32 @@
           display: none !important;
       }
 
-      .tabbrowser-tab .tab-background {
-          margin: 0 !important;
-      }
-
-      .tabbrowser-tab[selected] .tab-background {
-          background-color: #${colors.orange} !important;
-      }
-
-      .tabbrowser-tab[selected] .tab-throbber,
-      .tabbrowser-tab[selected] .tab-label,
-      .tabbrowser-tab[selected] .tab-text {
-          color: #${colors.black} !important;
-      }
-
-      .tabbrowser-tab[selected] .tab-icon-image {
-          fill: #${colors.black} !important;
+      #nav-bar {
+          border-bottom: 1px solid #${colors.orange} !important;
       }
 
       * {
+          animation: none !important;
           border-radius: 0 !important;
+          transition: none !important;
       }
     '';
     userContent = ''
-      * {
+      :root {
+          --background-color-canvas: #${colors.black} !important;
+          --newtab-background-color: #${colors.black} !important;
+      }
+
+      .personalizeButtonWrapper {
+          display: none !important;
+      }
+
+      *,
+      *::before,
+      *::after {
+          animation: none !important;
           border-radius: 0 !important;
+          transition: none !important;
       }
     '';
     settings = {

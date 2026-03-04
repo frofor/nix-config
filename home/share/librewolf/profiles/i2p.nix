@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, colors, ... }:
 
 {
   programs.librewolf.profiles.i2p = {
@@ -29,12 +29,27 @@
     };
     userChrome = ''
       * {
+          animation: none !important;
           border-radius: 0px !important;
+          transition: none !important;
       }
     '';
     userContent = ''
-      * {
+      :root {
+          --background-color-canvas: #${colors.black} !important;
+          --newtab-background-color: #${colors.black} !important;
+      }
+
+      .personalizeButtonWrapper {
+          display: none !important;
+      }
+
+      *,
+      *::before,
+      *::after {
+          animation: none !important;
           border-radius: 0px !important;
+          transition: none !important;
       }
     '';
     settings = {
