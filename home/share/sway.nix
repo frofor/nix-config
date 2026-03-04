@@ -26,9 +26,9 @@ in
         "${mod}+a" = "exec footclient -F ${myLib.scripts.skApp}";
         "${mod}+c" = "exec footclient -F ${myLib.scripts.skCd}";
         "${mod}+p" = "exec footclient -F ${myLib.scripts.skPass}";
+        "${mod}+q" = "kill";
         "${mod}+s" = "exec footclient -F ${myLib.scripts.skService}";
         "${mod}+u" = "exec footclient -F ${myLib.scripts.skJournal}";
-        "${mod}+x" = "kill";
         "${mod}+r" = "mode resize";
         "${mod}+h" = "focus left";
         "${mod}+left" = "focus left";
