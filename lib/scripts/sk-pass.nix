@@ -2,32 +2,31 @@
 
 pkgs.writeShellScript "sk-pass.sh" ''
   #!/bin/sh
-  set -e
-
-  entry="$(find "$PASSWORD_STORE_DIR" -type f -name '*.gpg' -printf '%P\n' \
+  entry=$(find "$PASSWORD_STORE_DIR" -type f -name '*.gpg' -printf '%P\n' \
       | sed s/\.gpg$// \
       | sort -V \
-      | sk -p 'Choose an entry: ')"
+      | sk -p 'Choose an entry: ') || exit 1
 
   case "$entry" in
       *-otp)
           attr=OTP
-          pass=$(pass otp "$entry")
+          pass=$(pass otp "$entry") || exit 1
       ;;
       *)
-          attrs="Password: $(pass show "$entry")"
+          attrs=$(pass show "$entry") || exit 1
+          attrs=$(printf 'Password: %s\n' "$attrs")
           if [ $(printf '%s\n' "$attrs" | wc -l) -gt 1 ]; then
-              attr="$(printf '%s\n' "$attrs" \
+              attr=$(printf '%s\n' "$attrs" \
                   | awk -F : '{print $1}' \
                   | sort -V \
-                  | sk -p 'Choose an attribute: ')"
+                  | sk -p 'Choose an attribute: ') || exit 1
           else
-              attr="$(printf '%s\n' "$attrs" | awk -F : '{print $1}')"
+              attr=$(printf '%s\n' "$attrs" | awk -F : '{print $1}')
           fi
-          pass="$(printf '%s\n' "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')"
+          pass=$(printf '%s\n' "$attrs" | grep "^$attr:" | sed 's/^[^:]*: *//')
       ;;
   esac
 
   wl-copy "$pass"
-  ${pkgs.libnotify}/bin/notify-send "Copied $entry#$attr to clipboard"
+  ${pkgs.libnotify}/bin/notify-send "Copied $attr of $entry to clipboard"
 ''

@@ -5,9 +5,7 @@ let
 in
 pkgs.writeShellScript "snip.sh" ''
   #!/bin/sh
-  set -e
-
-  area="$(${pkgs.slurp}/bin/slurp)"
+  area=$(${pkgs.slurp}/bin/slurp) || exit 1
   mkdir -p '${screenshotsDir}'
   path="${screenshotsDir}/$(date +%Y-%m-%d-%H-%M-%S).png"
   ${pkgs.grim}/bin/grim -g "$area" "$path"

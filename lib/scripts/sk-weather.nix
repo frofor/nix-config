@@ -2,9 +2,8 @@
 
 pkgs.writeShellScript "sk-weather.sh" ''
   #!/bin/sh
-  set -e
-
-  days=$(seq 0 6 | ${skExt} -f "xargs -I {} date -d '{} days' +%d.%m" -- -p 'Choose a date: ')
+  days=$(seq -2 6 | ${skExt} -f "xargs -I {} date -d '{} days' +%d.%m" -- -p 'Choose a date: ') \
+      || exit 1
   date=$(date -d "$days days" +%Y-%m-%d)
 
   url=https://api.open-meteo.com/v1/forecast
@@ -24,7 +23,7 @@ pkgs.writeShellScript "sk-weather.sh" ''
               + " \(.[1] | tostring | " " * (4 - length) + .) °C  "
               + "󰖝 \(.[2] | tostring | " " * (4 - length) + .) km/h  "
               + " \(.[3] | tostring | " " * (5 - length) + .) mm"' \
-      | sk -p 'Choose a time: ')
+      | sk -p 'Choose a time: ') || exit 1
 
   wl-copy "$weather"
   ${pkgs.libnotify}/bin/notify-send "Weather copied to clipboard" "$weather"
