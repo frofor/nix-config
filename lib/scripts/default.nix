@@ -10,7 +10,7 @@ rec {
   skExt = import ./sk-ext.nix { inherit pkgs; };
   skJournal = import ./sk-journal.nix { inherit pkgs; };
   skPass = import ./sk-pass.nix { inherit pkgs; };
-  skPlaylist = import ./sk-playlist.nix { inherit config pkgs; };
+  skPlaylist = import ./sk-playlist.nix { inherit pkgs; };
   skService = import ./sk-service.nix { inherit pkgs; };
   skWeather = import ./sk-weather.nix { inherit pkgs skExt latitude longitude; };
   snip = import ./snip.nix { inherit config pkgs; };
