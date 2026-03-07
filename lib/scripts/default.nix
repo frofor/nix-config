@@ -2,6 +2,8 @@
 
 rec {
   def = import ./def.nix { inherit pkgs; };
+  luksClose = { uuid }: import ./luks-close.nix { inherit pkgs uuid; };
+  luksOpen = { uuid, passEntry }: import ./luks-open.nix { inherit pkgs uuid passEntry; };
   pkg = import ./pkg.nix { inherit pkgs; };
   skApp = import ./sk-app.nix { inherit pkgs user; };
   skCd = import ./sk-cd.nix { inherit pkgs; };
