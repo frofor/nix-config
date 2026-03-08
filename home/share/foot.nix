@@ -9,6 +9,7 @@
       "key-bindings" = {
         "scrollback-down-half-page" = "Alt+d";
         "scrollback-up-half-page" = "Alt+u";
+        "spawn-terminal" = "none";
       };
       colors = {
         foreground = colors.white;
