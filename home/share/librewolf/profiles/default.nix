@@ -40,6 +40,7 @@
           definedAliases = [ "@nvo" ];
         };
         bing.metaData.hidden = true;
+        ddg.metaData.hidden = true;
         google.metaData.hidden = true;
         perplexity.metaData.hidden = true;
         wikipedia.metaData.hidden = true;
