@@ -7,7 +7,7 @@
       };
       grub.enable = false;
       efi.canTouchEfiVariables = true;
-      timeout = 0;
+      timeout = 1;
     };
     kernelParams = [ "quiet" "loglevel=3" ];
     consoleLogLevel = 0;
