@@ -9,6 +9,8 @@ in
     config = {
       modifier = mod;
       input."*" = {
+        repeat_delay = "250";
+        repeat_rate = "30";
         xkb_layout = "us,de,ru";
         xkb_options = "grp:alt_shift_toggle";
       };
