@@ -3,10 +3,21 @@
 {
   programs.librewolf.profiles.default = {
     search = {
+      default = "duckDuckGoHtml";
       engines = {
-        duckDuckGo = {
-          name = "DuckDuckGo";
-          urls = [{ template = "https://noai.duckduckgo.com?q={searchTerms}"; }];
+        duckDuckGoHtml = {
+          name = "DuckDuckGo HTML";
+          urls = [{ template = "https://html.duckduckgo.com/html?q={searchTerms}"; }];
+        };
+        movies = {
+          name = "Movies";
+          urls = [{ template = "https://themoviedb.org/search/movie?query={searchTerms}"; }];
+          definedAliases = [ "@mo" ];
+        };
+        music = {
+          name = "Music";
+          urls = [{ template = "https://musicbrainz.org/search?query={searchTerms}&type=recording&method=indexed"; }];
+          definedAliases = [ "@mu" ];
         };
         nixWiki = {
           name = "Nix Wiki";
@@ -25,10 +36,7 @@
         };
         nixvimOptions = {
           name = "Nixvim Options";
-          urls = [{
-            template =
-              "https://nix-community.github.io/nixvim/NeovimOptions/index.html?search={searchTerms}";
-          }];
+          urls = [{ template = "https://nix-community.github.io/nixvim/NeovimOptions/index.html?search={searchTerms}"; }];
           definedAliases = [ "@nvo" ];
         };
         bing.metaData.hidden = true;
