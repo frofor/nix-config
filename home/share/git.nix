@@ -11,6 +11,7 @@
       };
       commit.gpgSign = true;
       init.defaultBranch = "main";
+      pull.rebase = true;
       alias = {
         a = "add";
         b = "branch";
