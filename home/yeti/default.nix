@@ -52,6 +52,8 @@ in
   home.packages = with pkgs; [
     android-tools
     gimp
+    git-lfs
+    godot
     libreoffice
     monero-cli
     myLib.scripts.def
