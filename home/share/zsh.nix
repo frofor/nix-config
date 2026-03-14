@@ -18,7 +18,7 @@
     initContent = ''
       [ "$TTY" = /dev/tty1 ] && exec sway >/dev/null 2>&1
 
-      _comp_options+=(globdots)
+      setopt glob_dots
       zstyle ':completion:*' completer _complete _ignored _correct _approximate
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       zstyle ':completion:*' menu select
