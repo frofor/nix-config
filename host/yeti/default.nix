@@ -10,6 +10,7 @@
     ../share/getty.nix
     ../share/network.nix
     ../share/pipewire.nix
+    ../share/qmk.nix
     ../share/rtorrent.nix
     ../share/zsh.nix
   ];

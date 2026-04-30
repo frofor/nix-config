@@ -62,6 +62,7 @@ in
     myLib.scripts.vwhich
     nerd-fonts.iosevka
     nil
+    qmk
     tor-browser
     trash-cli
     wl-clipboard
