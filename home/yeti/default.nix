@@ -65,6 +65,7 @@ in
     qmk
     tor-browser
     trash-cli
+    ungoogled-chromium
     wl-clipboard
     xdg-utils
   ];
