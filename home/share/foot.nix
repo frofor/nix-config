@@ -11,7 +11,7 @@
         "scrollback-up-half-page" = "Alt+u";
         "spawn-terminal" = "none";
       };
-      colors = {
+      colors-dark = {
         foreground = colors.white;
         background = colors.black;
       };
