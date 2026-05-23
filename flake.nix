@@ -21,7 +21,7 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${user}.imports = [ ./home/${host} ];
+          users.${user}.imports = [ ./home ];
           sharedModules = [ nixvim.homeModules.nixvim ];
           extraSpecialArgs = { inherit inputs host user; };
         };
@@ -29,7 +29,7 @@
       mkSystem = { host, user, system ? "x86_64-linux" }: nixpkgs.lib.nixosSystem {
         pkgs = import nixpkgs { inherit system overlays; };
         modules = [
-          ./host/${host}
+          ./host
           home-manager.nixosModules.home-manager
           (mkHomeModule { inherit host user; })
         ];
@@ -37,7 +37,7 @@
       };
       mkHome = { host, user, system ? "x86_64-linux" }: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { inherit system overlays; };
-        modules = [ ./home/${host} nixvim.homeModules.nixvim ];
+        modules = [ ./home nixvim.homeModules.nixvim ];
         extraSpecialArgs = { inherit inputs host user; };
       };
     in

@@ -4,15 +4,15 @@
   imports = [
     ./hardware.nix
     ./vpn.nix
-    ../share/boot.nix
-    ../share/cups.nix
-    ../share/doas.nix
-    ../share/getty.nix
-    ../share/network.nix
-    ../share/pipewire.nix
-    ../share/qmk.nix
-    ../share/rtorrent.nix
-    ../share/zsh.nix
+    ./boot.nix
+    ./cups.nix
+    ./doas.nix
+    ./getty.nix
+    ./network.nix
+    ./pipewire.nix
+    ./qmk.nix
+    ./rtorrent.nix
+    ./zsh.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11";
