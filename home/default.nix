@@ -11,6 +11,7 @@ let
   publicKeys = [
     { source = ./gpg/frofor.asc; trust = 5; }
     { source = ./gpg/pass.asc; trust = 5; }
+    { source = ./gpg/qtroo.asc; trust = 5; }
   ];
   colors = {
     black = "000000";
