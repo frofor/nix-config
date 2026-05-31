@@ -2,16 +2,17 @@
 
 {
   imports = [
-    ./hardware.nix
-    ./vpn.nix
     ./boot.nix
     ./cups.nix
     ./doas.nix
     ./getty.nix
+    ./hardware.nix
+    ./monero.nix
     ./network.nix
     ./pipewire.nix
     ./qmk.nix
     ./rtorrent.nix
+    ./vpn.nix
     ./zsh.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
