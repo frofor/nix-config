@@ -4,10 +4,8 @@
     settings = {
       General.ConfigVersion = 2;
       GUI = {
-        ApplicationTheme = "dark";
         ColorPasswords = true;
         ShowTrayIcon = false;
-        TrayIconAppearance = "monochrome-dark";
       };
       PasswordGenerator = {
         AdvancedMode = true;

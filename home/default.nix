@@ -50,7 +50,7 @@ in
     ./zsh.nix
   ];
   home = {
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     username = user;
     homeDirectory = "/home/${user}";
     packages = with pkgs; [

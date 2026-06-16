@@ -16,7 +16,7 @@
     ./zsh.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   hardware.graphics.enable = true;
   environment.binsh = "${pkgs.dash}/bin/dash";
   time.timeZone = "Europe/Berlin";
