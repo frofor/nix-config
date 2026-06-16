@@ -1,18 +1,29 @@
 { pkgs, colors, ... }:
 
 {
-  programs.librewolf.profiles.default = {
+  programs.librewolf.profiles.code = {
+    id = 1;
     search = {
       engines = {
-        movies = {
-          name = "Movies";
-          urls = [{ template = "https://themoviedb.org/search/movie?query={searchTerms}"; }];
-          definedAliases = [ "@mo" ];
+        nixWiki = {
+          name = "Nix Wiki";
+          urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
+          definedAliases = [ "@nw" ];
         };
-        music = {
-          name = "Music";
-          urls = [{ template = "https://musicbrainz.org/search?query={searchTerms}&type=recording&method=indexed"; }];
-          definedAliases = [ "@mu" ];
+        nixPackages = {
+          name = "Nix Packages";
+          urls = [{ template = "https://search.nixos.org/packages?query={searchTerms}"; }];
+          definedAliases = [ "@np" ];
+        };
+        nixOptions = {
+          name = "Nix Options";
+          urls = [{ template = "https://mynixos.com/search?q=%2foption%2f+{searchTerms}"; }];
+          definedAliases = [ "@no" ];
+        };
+        nixvimOptions = {
+          name = "Nixvim Options";
+          urls = [{ template = "https://nix-community.github.io/nixvim/NeovimOptions/index.html?search={searchTerms}"; }];
+          definedAliases = [ "@nvo" ];
         };
         bing.metaData.hidden = true;
         ddg.metaData.hidden = true;

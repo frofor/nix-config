@@ -31,6 +31,10 @@
         name = "htop";
         exec = "footclient ${pkgs.htop}/bin/htop";
       };
+      librewolf-code = {
+        name = "LibreWolf Code";
+        exec = "librewolf -p code";
+      };
       librewolf-i2p = {
         name = "LibreWolf I2P";
         exec = "librewolf -p i2p";

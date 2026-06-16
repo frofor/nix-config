@@ -2,7 +2,7 @@
 
 {
   programs.librewolf.profiles.i2p = {
-    id = 1;
+    id = 2;
     search = {
       engines = {
         bing.metaData.hidden = true;
