@@ -55,6 +55,7 @@ in
     homeDirectory = "/home/${user}";
     packages = with pkgs; [
       android-tools
+      brave
       gimp
       git-lfs
       godot
@@ -70,7 +71,6 @@ in
       simplex-chat-desktop
       tor-browser
       trash-cli
-      ungoogled-chromium
       wl-clipboard
       xdg-utils
     ];
