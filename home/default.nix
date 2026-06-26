@@ -65,7 +65,6 @@ in
       myLib.scripts.flacCleanup
       (myLib.scripts.luksClose { uuid = "63a1f746-70ed-4fd8-9be0-0c67d99025f6"; })
       (myLib.scripts.luksOpen { uuid = "63a1f746-70ed-4fd8-9be0-0c67d99025f6"; })
-      myLib.scripts.vwhich
       nerd-fonts.iosevka
       nil
       qmk

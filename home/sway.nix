@@ -24,7 +24,7 @@ in
         "${mod}+f" = "fullscreen";
         "${mod}+a" = "exec footclient -F ${myLib.scripts.skApp}";
         "${mod}+c" = "exec footclient -F ${myLib.scripts.skCd}";
-        "${mod}+p" = "exec footclient -F ${myLib.scripts.skPass}";
+        "${mod}+p" = "exec footclient -F \"$(xdg-user-dir DOCUMENTS)\"/projects/pass-tui/target/release/pass-tui";
         "${mod}+q" = "kill";
         "${mod}+s" = "exec footclient -F ${myLib.scripts.skService}";
         "${mod}+u" = "exec footclient -F ${myLib.scripts.skJournal}";

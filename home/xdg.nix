@@ -55,10 +55,6 @@
         name = "";
         noDisplay = true;
       };
-      sk-playlist = {
-        name = "sk-playlist";
-        exec = "footclient -F ${myLib.scripts.skPlaylist}";
-      };
       sk-weather = {
         name = "sk-weather";
         exec = "footclient -F ${myLib.scripts.skWeather}";
