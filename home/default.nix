@@ -31,7 +31,8 @@ in
     (import ./git.nix { inherit nick email gpgKey; })
     (import ./gpg.nix { inherit config pkgs publicKeys; })
     ./keepassxc.nix
-    (import ./librewolf { inherit pkgs colors; })
+    # Temporary disable LibreWolf as it's marked as insecure
+    # (import ./librewolf { inherit pkgs colors; })
     (import ./mako.nix { inherit font colors; })
     ./mpv.nix
     ./nixvim

@@ -18,10 +18,7 @@ in
         HDMI-A-1.pos = "0 0";
         eDP-1.pos = "1920 0";
       };
-      startup = [
-        { command = "foot -s"; }
-        { command = "librewolf"; }
-      ];
+      startup = [{ command = "foot -s"; }];
       keybindings = {
         "${mod}+return" = "exec footclient";
         "${mod}+f" = "fullscreen";
