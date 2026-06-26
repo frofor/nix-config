@@ -12,5 +12,9 @@
         powersave = true;
       };
     };
+    firewall.allowedTCPPorts = [
+      4355 # chess-online
+      37000 # simplex
+    ];
   };
 }

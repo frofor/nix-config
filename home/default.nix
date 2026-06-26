@@ -67,6 +67,7 @@ in
       nerd-fonts.iosevka
       nil
       qmk
+      simplex-chat-desktop
       tor-browser
       trash-cli
       ungoogled-chromium
