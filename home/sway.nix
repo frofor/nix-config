@@ -103,9 +103,7 @@ in
       };
       bars = [{ command = "waybar"; }];
       assigns = {
-        "2" = [{ app_id = "librewolf"; }];
-        "3" = [{ app_id = "mpv"; }];
-        "4" = [{ app_id = "gimp"; }];
+        "2" = [{ app_id = "brave-browser"; } { app_id = "librewolf"; }];
       };
       workspaceOutputAssign = [
         { workspace = "1"; output = "HDMI-A-1"; }

@@ -5,7 +5,6 @@
         enable = true;
         editor = false;
       };
-      grub.enable = false;
       efi.canTouchEfiVariables = true;
       timeout = 1;
     };
